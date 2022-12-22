@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+/*
+  Author
+*/
+.p-author {
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+
+  &__title {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    background-color: $main-color;
+    color: #fff;
+  }
+
+  &__name {
+    padding: 1rem;
+  }
+}

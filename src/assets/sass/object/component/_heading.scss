@@ -1,0 +1,24 @@
+@charset 'UTF-8';
+/*
+  Heading
+*/
+
+.c-heading {
+  &.-primary {
+    $font-size: 20px;
+    margin-bottom: set-size(16px, $font-size);
+    font-size: set-size($font-size);
+  }
+
+  &.-center {
+    text-align: center;
+  }
+}
+
+@include mq(tab) {
+  .c-heading {
+    &.-primary {
+      font-size: 2em;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@charset 'UTF-8';
+/*
+  Post Categories
+*/
+.post-categories {
+  margin: 0.75em 0;
+
+  &.-inList {
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+
+    & + li {
+      margin-left: 0.5em;
+    }
+
+    a {
+      $font-size: 12px;
+      display: inline-block;
+      padding: set-size(4px, $font-size) set-size(8px, $font-size);
+      border-radius: set-size(8px, $font-size);
+      background-color: #eee;
+      color: inherit;
+      font-size: set-size($font-size);
+      text-decoration: none;
+
+      &:hover {
+        background-color: $main-color;
+        color: #fff;
+      }
+    }
+  }
+}

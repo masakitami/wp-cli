@@ -1,0 +1,26 @@
+@charset 'UTF-8';
+/*
+  Footer
+-----------------------------------------------------*/
+
+.l-footer {
+  padding: 1.5em 0;
+  clear: both;
+  background-color: $main-color;
+  color: $hint-text-color;
+
+  @include mq(tab) {
+    padding: 3em 0;
+  }
+
+  &__text {
+    margin-top: 1em;
+    color: $sub-color;
+    font-size: 0.75em;
+    text-align: center;
+
+    @include mq(tab) {
+      text-align: left;
+    }
+  }
+}

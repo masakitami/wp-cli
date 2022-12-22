@@ -1,0 +1,25 @@
+@charset 'UTF-8';
+/*
+  Card
+*/
+
+.c-card {
+  display: block;
+  position: relative;
+  padding-top: percentage(1 / 1.414);
+  color: inherit;
+  text-decoration: none;
+
+  &__body {
+    padding: 1rem;
+  }
+
+  &__thumbnail {
+    position: absolute;
+    top: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+}

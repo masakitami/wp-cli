@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+/*
+  Header
+-----------------------------------------------------*/
+.l-header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  .admin-bar & {
+    top: set-size(46px);
+
+    @include mq(tab) {
+      top: set-size(32px);
+    }
+  }
+}

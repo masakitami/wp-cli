@@ -1,0 +1,23 @@
+@charset 'UTF-8';
+/*
+  Media
+*/
+
+.c-media {
+  display: block;
+  overflow: hidden;
+
+  &__body {
+    width: percentage(512px/ 776px);
+    float: right;
+  }
+
+  &__thumbnail {
+    width: percentage(248px/ 776px);
+    float: left;
+
+    img {
+      width: 100%;
+    }
+  }
+}

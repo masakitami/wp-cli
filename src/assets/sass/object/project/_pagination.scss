@@ -1,0 +1,134 @@
+@charset 'UTF-8';
+/*
+  Pagination
+*/
+.pagination {
+  margin: 1.5em 0;
+
+  @include mq(tab) {
+    margin: 3em 0 0;
+  }
+}
+
+.page-numbers {
+  display: inline-block;
+  width: set-size(32px);
+  height: set-size(32px);
+  padding: set-size((32px - 24px) /2);
+  border: 4px solid $main-color;
+  border-radius: 50%;
+  background-color: #fff;
+  color: $primary-text-color;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+
+  @include mq(tab) {
+    width: set-size(48px);
+    height: set-size(48px);
+    padding: set-size((48px - 24px) /2);
+  }
+
+  &[href]:hover,
+  &.current {
+    background-color: $main-color;
+    color: #fff;
+  }
+
+  &.prev,
+  &.next {
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: set-size(8px);
+      height: set-size(8px);
+      margin: auto;
+      transform: rotate(45deg);
+      transition: all 0.3s ease-in-out;
+    }
+    &:before {
+      background-color: $primary-text-color;
+    }
+    &:after {
+      background-color: #fff;
+    }
+
+    &:hover {
+      &:before {
+        background-color: #fff;
+      }
+      &:after {
+        background-color: $main-color;
+      }
+    }
+  }
+
+  &.prev {
+    &:before,
+    &:after {
+      right: 0;
+    }
+
+    &:before {
+      left: set-size(4px);
+    }
+    &:after {
+      left: set-size(12px);
+    }
+  }
+
+  &.next {
+    &:before,
+    &:after {
+      left: 0;
+    }
+
+    &:before {
+      right: set-size(4px);
+    }
+    &:after {
+      right: set-size(12px);
+    }
+  }
+
+  & + & {
+    margin-left: 0.125em;
+
+    @include mq(tab) {
+      margin-left: 0.25em;
+    }
+  }
+}
+
+.nav {
+  &-links {
+    overflow: hidden;
+  }
+
+  &-previous,
+  &-next {
+    width: 49%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    a:first-line {
+      font-size: 1.5rem;
+    }
+  }
+
+  &-previous {
+    float: left;
+  }
+  &-next {
+    float: right;
+    text-align: right;
+  }
+}

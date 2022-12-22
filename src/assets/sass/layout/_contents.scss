@@ -1,0 +1,27 @@
+@charset 'UTF-8';
+/*
+  Contents
+-----------------------------------------------------*/
+
+.l-contents {
+  padding: set-size(24px) 0;
+  clear: both;
+  overflow: hidden;
+
+  @include mq(tab) {
+    padding: set-size(48px) 0;
+  }
+
+  &.-themeWhite {
+    background-color: #fff;
+  }
+
+  &__button {
+    max-width: 400px;
+    margin: 1.5rem auto 0;
+
+    @include mq(tab) {
+      margin-top: 3rem;
+    }
+  }
+}

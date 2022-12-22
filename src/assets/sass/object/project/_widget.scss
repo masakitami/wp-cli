@@ -1,0 +1,266 @@
+@charset 'UTF-8';
+/*
+  Widget
+*/
+.p-widget {
+  & + & {
+    margin-top: 1.5em;
+
+    @include mq(tab) {
+      margin-top: 2em;
+    }
+  }
+
+  &__title {
+    background-color: $main-color;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  &.-light {
+    .p-widget__title {
+      padding: 0.5em;
+
+      @include mq(tab) {
+        padding: 1em;
+      }
+    }
+  }
+
+  &.-dark {
+    .p-widget__title {
+      margin: 0.5em 0;
+
+      @include mq(tab) {
+        margin: 1em 0;
+      }
+    }
+  }
+
+  // 投稿リスト、カテゴリー
+  & > ul,
+  .menu {
+    > li {
+      a {
+        transition: all 0.3s ease-in-out;
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $main-color;
+          color: #fff;
+        }
+      }
+
+      .post-date {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  &.-light {
+    > ul,
+    .menu {
+      background-color: #fff;
+
+      li {
+        padding: 0.5em;
+
+        @include mq(tab) {
+          padding: 1em;
+        }
+
+        & + li {
+          border-top: 1px solid #ddd;
+        }
+      }
+    }
+  }
+
+  &.-dark {
+    > ul,
+    .menu {
+      li {
+        padding: 0.5em 0;
+
+        @include mq(tab) {
+          padding: 1em 0;
+        }
+
+        & + li {
+          border-top: 1px solid $hint-text-color;
+        }
+      }
+    }
+  }
+
+  // サイト内検索
+  form {
+    padding: 0.5em;
+    background-color: #fff;
+
+    @include mq(tab) {
+      padding: 1em;
+    }
+  }
+
+  // カレンダー
+  .calendar_wrap {
+    padding: 0.5em;
+    background-color: #fff;
+
+    @include mq(tab) {
+      padding: 1em;
+    }
+  }
+
+  table {
+    width: 100%;
+
+    caption {
+      font-weight: bold;
+    }
+
+    th,
+    td {
+      position: relative;
+      z-index: 0;
+      padding: 0.25em;
+      text-align: center;
+
+      @include mq(tab) {
+        padding: 0.5em;
+      }
+    }
+
+    thead {
+      font-weight: bold;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    tbody {
+      color: $secondary-text-color;
+      a {
+        display: block;
+        text-decoration: none;
+
+        &:before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          width: 2em;
+          height: 2em;
+          margin: auto;
+          transition: all 0.3s ease-in-out;
+          border-radius: 50%;
+          background-color: $base-color;
+        }
+
+        &:hover {
+          &:before {
+            background-color: $main-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    td#today {
+      color: $accent-color;
+      font-weight: bold;
+    }
+    td#prev {
+      font-weight: bold;
+      text-align: left;
+    }
+    td#next {
+      font-weight: bold;
+      text-align: right;
+    }
+  }
+
+  //タグクラウド
+  .tagcloud {
+    a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5em;
+      background-color: #fff;
+      color: $main-color;
+      line-height: 1;
+      text-decoration: none;
+
+      &:hover {
+        background-color: $main-color;
+        color: #fff;
+      }
+    }
+
+    .tag-link-count {
+      font-size: 0.5em;
+    }
+  }
+
+  // カスタムHTML
+  .textwidget {
+    width: 100%;
+
+    em,
+    strong {
+      font-weight: bold;
+    }
+
+    a {
+      color: $link-text-color;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &.-light {
+    .textwidget {
+      background-color: #fff;
+
+      strong {
+        color: $accent-color;
+      }
+    }
+  }
+
+  &.-dark {
+    .textwidget {
+      strong {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.p-widget.-light > .wp-widget-group__inner-blocks > ul {
+  background-color: #fff !important;
+}
+
+.p-widget.-light > .wp-widget-group__inner-blocks > ul > li {
+  padding: 1em !important;
+
+  & + li {
+    border-top: 1px solid #ddd;
+  }
+}
+
+.p-widget.-light > div > ul > li a {
+  transition: all 0.3s ease-in-out;
+  color: inherit;
+  text-decoration: none;
+}
