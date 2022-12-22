@@ -1,4 +1,4 @@
-# Orelop CLI 2.1.1
+# WP-CLI 1.0.0
 
 八雲のWebサイト制作開発環境
 Ore no Web Develop Command Line Interface 略して「Orelop CLI」です。
