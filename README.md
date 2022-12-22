@@ -1,9 +1,8 @@
 # WP-CLI 1.0.0
 
 八雲のWebサイト制作開発環境
-Ore no Web Develop Command Line Interface 略して「Orelop CLI」です。
 
-僕なりの Web サイト制作の開発環境ってことです。
+僕なりの Web サイト制作の開発環境です。
 
 昔は Gulp を使って開発環境を作っていましたが、Gulp をやめて webpack を使って実行する開発環境を作りました。
 version1.0 では、webpack は JavaScript のバンドルとトランスパイルの目的だけで使っており、他のコンパイルは npm-scripts で書いていましたが、この version2.0 では、ほぼ全てのコンパイルを webpack で行っています。
