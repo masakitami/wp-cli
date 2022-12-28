@@ -76,7 +76,7 @@ services:
       MYSQL_PASSWORD: wp_pass
       MYSQL_ROOT_PASSWORD: root_pass
     ports:
-      - "3302:3302"
+      - "3301:3301"
     volumes:
       - ./config/mysql/mysql_data:/var/lib/mysql
 

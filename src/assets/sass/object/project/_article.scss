@@ -1,69 +1,96 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
 /*
   Article
 */
+
+.single-post.l-header {
+  margin-bottom: 0;
+}
+
 .p-article {
-  padding: 0.5em;
-  background-color: #fff;
+  // padding: pxToRem(16px) pxToRem(16px);
+  // padding: pxToRem(24px) pxToRem(51px);
+  // padding: 0.5em;
+  word-wrap: break-word;
 
-  @include mq(tab) {
-    padding: 1.5em;
+  @include mq(lg) {
+    padding: pxToRem(24px) pxToRem(48px) 0;
+    background-color: #fff;
   }
 
-  &__title {
-    $font-size: 14px;
-    min-height: set-size($font-size * 1.5 * 3, $font-size);
-    font-size: set-size($font-size);
-    font-weight: bold;
+  // @include mq(md) {
+  //   padding: 1.5em;
+  // }
 
-    @include mq(tab) {
-      $font-size: 20px;
-      min-height: set-size($font-size * 1.5 * 3, $font-size);
-      font-size: set-size($font-size);
-    }
+  // &__detail {
+  //   display: flex;
+  // }
 
-    &.-detail {
-      $font-size: 24px;
-      min-height: auto;
-      font-size: set-size($font-size);
+  // &__detail__list {
+  //   display: inline-flex;
+  //   width: 100%;
+  // }
 
-      @include mq(tab) {
-        $font-size: 40px;
-        font-size: set-size($font-size);
-      }
-    }
+  &__toc {
+    background-color: $accent-color;
+  }
 
-    &.-center {
-      text-align: center;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-
-      &:hover {
-        background-color: $main-color;
-        color: #fff;
-      }
+  &__detail {
+    padding: pxToRem(20px) 0;
+    @include mq(lg) {
+      padding: pxToRem(40px) 0;
     }
   }
+
+  &__detail__item {
+    display: inline-block;
+    & + & {
+      margin-right: pxToRem(16px);
+    }
+  }
+
+  &__detail__anchor {
+    border-bottom: 1px solid $base-color;
+    color: $base-color;
+    font-weight: 400;
+  }
+
+  &__text {
+    margin-bottom: pxToRem(8px);
+  }
+
+  &__deitail__item:first-child {
+    margin-bottom: pxToRem(16px);
+
+    @include mq(lg) {
+      margin-bottom: 0;
+    }
+  }
+
+  // &__detail__item {
+  //   & + & {
+  //     margin-right: pxToRem(16px);
+  //   }
+  // }
 
   &__eyecatch {
-    margin: 0.5rem 0;
-
-    @include mq(tab) {
-      margin: 1.5rem 0;
+    @include mq(lg) {
+      padding-top: pxToRem(16px);
     }
 
     img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
   &__time {
     font-size: set-size(12px);
 
-    @include mq(tab) {
+    @include mq(md) {
       font-size: set-size(14px);
     }
   }
@@ -77,11 +104,11 @@
       font-weight: bold;
     }
 
-    dd + dt {
-      margin-top: 1rem;
-    }
+    // dd + dt {
+    //   margin-top: 1rem;
+    // }
 
-    @include mq(tab) {
+    @include mq(md) {
       dt {
         margin: 0 1.5rem 0 0;
         padding: 0.75rem 0;
@@ -121,8 +148,9 @@
     table,
     figure {
       margin: 1em 0;
+      scroll-margin-top: 80px;
 
-      @include mq(tab) {
+      @include mq(md) {
         margin: 1.5rem 0 1em;
       }
     }
@@ -137,30 +165,33 @@
     }
 
     h1 {
-      font-size: set-size(24px);
+      font-size: pxToRem(24px);
 
-      @include mq(tab) {
-        font-size: set-size(32px);
+      @include mq(md) {
+        font-size: pxToRem(32px);
       }
     }
 
     h2 {
-      padding: 0.25em 0;
-      border-top: 1px solid $main-color;
-      border-bottom: 1px solid $main-color;
-      font-size: set-size(24px);
+      padding: 0.5em 1em;
+      // border-top: 1px solid $main-color;
+      // border-bottom: 1px solid $main-color;
+      background-color: rgba($base-color, 0.1);
+      font-size: pxToRem(24px);
 
-      @include mq(tab) {
-        font-size: set-size(28px);
+      @include mq(md) {
+        font-size: pxToRem(28px);
       }
     }
 
     h3 {
       padding: 0.5em 1em;
-      background-color: #eee;
+      border-top: 1px solid $main-color;
+      border-bottom: 1px solid $main-color;
+      // background-color: #eee;
       font-size: set-size(20px);
 
-      @include mq(tab) {
+      @include mq(md) {
         font-size: set-size(24px);
       }
     }
@@ -170,7 +201,7 @@
       border-left: 0.25rem solid $main-color;
       font-size: set-size(18px);
 
-      @include mq(tab) {
+      @include mq(md) {
         font-size: set-size(20px);
       }
     }
@@ -178,7 +209,7 @@
     h5 {
       font-size: set-size(16px);
 
-      @include mq(tab) {
+      @include mq(md) {
         font-size: set-size(18px);
       }
     }
@@ -193,9 +224,21 @@
       }
     }
 
+    // a {
+    //   scroll-margin-top: 80px;
+    // }
+
     ul,
     ol {
-      padding-left: set-size(20px);
+      margin-top: 0.25em !important;
+      margin-bottom: 0.25em !important;
+      padding-left: pxToRem(20px);
+
+      a {
+        color: inherit;
+        font-weight: 300;
+        text-decoration: underline;
+      }
     }
 
     ul {
@@ -233,8 +276,52 @@
   &__footer {
     margin: 2rem 0;
 
-    @include mq(tab) {
+    @include mq(md) {
       margin: 4rem 0;
     }
+  }
+
+  &__title {
+    $font-size: 14px;
+    min-height: set-size($font-size * 1.5 * 3, $font-size);
+    font-size: set-size($font-size);
+    font-weight: bold;
+
+    @include mq(md) {
+      $font-size: 20px;
+      min-height: set-size($font-size * 1.5 * 3, $font-size);
+      font-size: set-size($font-size);
+    }
+
+    &.-detail {
+      $font-size: 24px;
+      min-height: auto;
+      margin-bottom: pxToRem(16px);
+      font-size: pxToRem($font-size);
+
+      @include mq(md) {
+        $font-size: 40px;
+        font-size: pxToRem($font-size);
+      }
+    }
+
+    &.-center {
+      text-align: center;
+    }
+  }
+}
+
+/* ==============================
+コンタクトページ
+============================== */
+.p-article.-contact {
+  width: 100%;
+  margin-inline: auto;
+  margin-bottom: pxToRem(32px);
+
+  @include mq(lg) {
+    width: 60%;
+    margin-inline: auto;
+    margin-bottom: pxToRem(64px);
   }
 }

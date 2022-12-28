@@ -1,4 +1,7 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
 //====================================
 //  Break
 //====================================
@@ -7,19 +10,19 @@
   Break
 */
 .u-break {
-  .-sp {
-    display: inline-block;
-
-    @include mq(tab) {
+  &.-xxs {
+    @include mq(sm) {
       display: none;
     }
+    display: inline-block;
   }
 
-  .-tab {
-    display: none;
-
-    @include mq(tab) {
+  &.-md {
+    @include mq(md) {
       display: inline-block;
+    }
+    @include mq(lg) {
+      display: none;
     }
   }
 }

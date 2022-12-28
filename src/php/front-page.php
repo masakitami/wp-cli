@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_template_part("header"); ?>
 
 <main class="l-main -single">
   <div class="p-hero -home">
@@ -24,9 +24,14 @@
         ?>
     <p>投稿がありません</p>
     <?php endif; ?>
+
+    https://goo.gl/maps/6zJz46eNU5MkGS43A
   </section>
   <!-- /.l-contents -->
 </main>
 
-
-<?php get_footer(); ?>
+<iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3228.119324958911!2d139.3964919152079!3d35.99295092042052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018d5c9a95aa961%3A0xecd0d6f889aa7d7!2z44CSMzU1LTAwNjQg5Z-8546J55yM5p2x5p2-5bGx5biC5q-b5aGa77yX77yV77yQ4oiS77yS77yZ!5e0!3m2!1sja!2sjp!4v1672215396152!5m2!1sja!2sjp"
+  width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"></iframe>
+<?php get_template_part("footer"); ?>

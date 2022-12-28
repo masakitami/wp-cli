@@ -1,0 +1,76 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+.p-aboutMe {
+  position: relative;
+  z-index: 1;
+
+  @at-root &__title {
+    padding-top: pxToRem(32px);
+    transform: translateY(-38%);
+    border-radius: 25px;
+    background-color: $md-white;
+    text-align: center;
+
+    @include mq(sm) {
+      transform: unset;
+      border-radius: 0;
+      background-color: unset;
+      text-align: left;
+    }
+  }
+  @at-root &__pic {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+
+    @include mq(sm) {
+      padding-top: pxToRem(32px);
+    }
+
+    @include mq(lg) {
+      width: auto;
+      margin-left: calc(50% - 50vw);
+      padding-top: 0;
+    }
+  }
+
+  @at-root &__contents {
+    font-size: pxToRem(12px);
+    line-height: 1.75;
+
+    @include mq(sm) {
+      padding-top: pxToRem(32px);
+      padding-left: 0;
+    }
+
+    @include mq(lg) {
+      margin: 0;
+      padding-top: pxToRem(32px);
+      padding-left: clamp(pxToRem(56px), pxToVw(64px, 1366px), pxToRem(128px));
+      font-size: pxToRem(16px);
+      white-space: pre-line;
+    }
+
+    @include mq(xxl) {
+      padding-left: 0;
+      transform: translateX(10vw);
+    }
+  }
+
+  @at-root &__text {
+    margin-bottom: pxToRem(24px);
+    @include mq(lg) {
+      font-size: pxToRem(16px);
+      font-size: clamp(pxToRem(12px), pxToVw(16px, 1366px), pxToRem(16px));
+    }
+  }
+
+  @at-root &__button {
+    text-align: center;
+
+    @include mq(lg) {
+      text-align: left;
+    }
+  }
+}

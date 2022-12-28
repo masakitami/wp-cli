@@ -1,0 +1,149 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+.p-service {
+  $this: &;
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  background-color: rgba($main-color, 0.1);
+
+  //--------------------------------------------
+  // アニメーション
+  //--------------------------------------------
+  @at-root &__animation {
+    display: flex;
+    position: absolute;
+    z-index: -1;
+    top: -5%;
+    width: 100%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+
+    @include mq(xs) {
+      top: -3%;
+    }
+
+    @include mq(sm) {
+      top: -10%;
+    }
+
+    @include mq(lg) {
+      top: -6%;
+    }
+  }
+
+  .p-service__animation__list {
+    display: flex;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .p-service__animation__item {
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+  }
+  // .p-service__animation__item:first-child {
+  //   background-color: blue;
+  // }
+
+  .p-service__animation__item.-right {
+    position: absolute;
+    right: 100vw;
+  }
+
+  .p-service__animation__item.-right2 {
+    position: absolute;
+    right: 200vw;
+  }
+
+  .p-service__animation__text {
+    position: relative;
+    width: 80%;
+    // margin-inline: auto;
+
+    @include mq(lg) {
+      width: 75%;
+    }
+  }
+
+  //--------------------------------------------
+  // elem(各久のサービス)
+  //--------------------------------------------
+  @at-root &__elem:not(:last-child) {
+    margin-bottom: pxToRem(88px);
+
+    @include mq(lg) {
+      margin-bottom: pxToRem(128px);
+    }
+  }
+  //--------------------------------------------
+  // 文章の中身
+  //--------------------------------------------
+  @at-root &__contents {
+    margin-bottom: pxToRem(32px);
+    @include mq(lg) {
+      margin: 0;
+      padding: pxToRem(112px) 0;
+    }
+  }
+
+  //--------------------------------------------
+  // 文章の中身のタイトル
+  //--------------------------------------------
+  @at-root &__title {
+    margin-bottom: pxToRem(8px);
+    font-weight: 700;
+  }
+
+  //--------------------------------------------
+  // 文章の中身のタイトルのメイン
+  //--------------------------------------------
+  @at-root &__title.-main {
+    font-size: pxToRem(24px);
+    font-style: normal;
+    font-weight: 500;
+
+    @include mq(lg) {
+      font-size: pxToRem(40px);
+      font-size: clamp(pxToRem(28px), pxToVw(40px, 1366px), pxToRem(32px));
+    }
+  }
+
+  //--------------------------------------------
+  // 文章の中身のタイトルのサブ
+  //--------------------------------------------
+  @at-root &__title.-sub {
+    color: $main-color;
+    font-family: $eng-set-primary;
+    font-size: pxToRem(16px);
+    font-style: normal;
+    font-weight: 400;
+    @include lh-crop(1.5);
+
+    @include mq(lg) {
+      @include lh-crop(1.5);
+      font-size: pxToRem(16px);
+      font-size: clamp(pxToRem(20px), pxToVw(24px, 1366px), pxToRem(24px));
+    }
+  }
+
+  //--------------------------------------------
+  // 文章の中身のテキスト
+  //--------------------------------------------
+  @at-root &__text {
+    margin-bottom: pxToRem(16px);
+  }
+
+  @at-root &__button {
+    position: relative;
+    z-index: 1;
+  }
+}

@@ -22,6 +22,9 @@ nodenvなどでnodeのバージョンを14以上にする。
 ### 手順4
 yarn installでpackage.jsonを読み込む
 
+## WordPressで使う場合の注意点
+- 404.phpを表示させるためにはパーマリンク設定を適当に選んで切り替える
+
 
 ## 概要
 

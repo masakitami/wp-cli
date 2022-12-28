@@ -1,34 +1,69 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
 /*
   Pagination
 */
 .pagination {
   margin: 1.5em 0;
+  text-align: center;
 
-  @include mq(tab) {
+  @include mq(md) {
     margin: 3em 0 0;
+  }
+
+  a {
+    font-weight: normal;
   }
 }
 
 .page-numbers {
   display: inline-block;
-  width: set-size(32px);
-  height: set-size(32px);
-  padding: set-size((32px - 24px) /2);
-  border: 4px solid $main-color;
+  width: 1.25em;
+  height: 1.25em;
+  border: 1px solid #65acca;
   border-radius: 50%;
   background-color: #fff;
-  color: $primary-text-color;
-  font-weight: bold;
+  color: #354a63;
+  font-size: 1.55rem;
+  // font-weight: bold;
   line-height: 1;
   text-align: center;
   text-decoration: none;
   vertical-align: top;
 
-  @include mq(tab) {
-    width: set-size(48px);
-    height: set-size(48px);
-    padding: set-size((48px - 24px) /2);
+  @include mq(sm) {
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.25;
+  }
+
+  &.prev {
+    &:before,
+    &:after {
+      right: 0;
+    }
+
+    &:before {
+      left: pxToRem(4px);
+    }
+    &:after {
+      left: pxToRem(12px);
+    }
+  }
+
+  &.next {
+    &:before,
+    &:after {
+      left: 0;
+    }
+
+    &:before {
+      right: pxToRem(4px);
+    }
+    &:after {
+      right: pxToRem(12px);
+    }
   }
 
   &[href]:hover,
@@ -47,8 +82,8 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      width: set-size(8px);
-      height: set-size(8px);
+      width: pxToRem(8px);
+      height: pxToRem(8px);
       margin: auto;
       transform: rotate(45deg);
       transition: all 0.3s ease-in-out;
@@ -70,65 +105,334 @@
     }
   }
 
-  &.prev {
-    &:before,
-    &:after {
-      right: 0;
-    }
-
-    &:before {
-      left: set-size(4px);
-    }
-    &:after {
-      left: set-size(12px);
-    }
-  }
-
-  &.next {
-    &:before,
-    &:after {
-      left: 0;
-    }
-
-    &:before {
-      right: set-size(4px);
-    }
-    &:after {
-      right: set-size(12px);
-    }
-  }
-
   & + & {
-    margin-left: 0.125em;
+    // margin-left: 0.125em;
 
-    @include mq(tab) {
+    @include mq(md) {
       margin-left: 0.25em;
     }
   }
 }
 
+//--------------------------------------------
+// 投稿の次の記事、前の記事の装飾
+//--------------------------------------------
+.navigation.post-navigation {
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+
+  @include mq(lg) {
+    width: 100%;
+    margin: 0;
+  }
+
+  // .nav-links a {
+  //   position: relative;
+  //   z-index: 2;
+  // }
+  // .nav-previous {
+  //   position: relative;
+  // }
+
+  // .nav-previous:before {
+  //   content: "";
+  //   display: block;
+  //   position: absolute;
+  //   width: 0%;
+  //   height: 100%;
+  //   transition-duration: 0.6s;
+  //   transition-timing-function: $easing;
+  //   background-color: $base-color;
+  // }
+
+  // .nav-previous:hover:before {
+  //   width: 100%;
+  // }
+
+  // .nav-next {
+  //   position: relative;
+  // }
+
+  // .nav-next:before {
+  //   content: "";
+  //   display: block;
+  //   position: absolute;
+  //   width: 0%;
+  //   height: 100%;
+  //   transition-duration: 0.6s;
+  //   transition-timing-function: $easing;
+  //   background-color: $base-color;
+  // }
+
+  // .nav-next:hover:before {
+  //   width: 100%;
+  // }
+}
+
 .nav {
+  $this: &;
+
   &-links {
     overflow: hidden;
+
+    // @include mq(lg) {
+    //   margin: 0 pxToRem(-48px);
+    //   padding: 0 pxToRem(48px);
+    // }
+  }
+
+  &-links a {
+    position: relative;
+    z-index: 2;
   }
 
   &-previous,
   &-next {
-    width: 49%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
+    display: -webkit-box;
+    position: relative;
+    z-index: 2;
+    // flex: 0 0 10rem;
+    width: 50%;
     a:first-line {
-      font-size: 1.5rem;
+      font-size: pxToRem(16px);
+
+      @include mq(md) {
+        font-size: pxToRem(24px);
+      }
     }
   }
 
   &-previous {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
     float: left;
+    background-clip: padding-box;
+    background-color: $sub-color;
+
+    .nav-title {
+      display: block;
+      width: 80%;
+      overflow: hidden;
+      font-weight: 300;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
   }
+
+  &-previous:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    transition-duration: 0.6s;
+    transition-timing-function: $easing;
+    background-color: $main-color;
+  }
+
+  &-previous:hover:before {
+    width: 100%;
+  }
+
+  &-previous a {
+    display: block;
+    // margin: 0 pxToRem(-48px);
+    // padding-left: pxToRem(48px);
+    flex: 0 0 10rem;
+    padding: pxToRem(16px) 0 pxToRem(16px) 10%;
+    overflow: hidden;
+    color: $md-white;
+
+    @include mq(lg) {
+      padding: pxToRem(24px) 0;
+      padding-left: pxToRem(48px);
+    }
+  }
+
   &-next {
+    display: block;
     float: right;
+    background-color: $main-color;
     text-align: right;
+
+    // @include mq(lg) {
+    //   margin-right: pxToRem(-48px);
+    //   margin-left: pxToRem(-48px);
+    // }
+
+    .nav-title {
+      display: block;
+      width: 80%;
+      margin-left: auto;
+      overflow: hidden;
+      font-weight: 300;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
   }
+
+  &-next:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    transition-duration: 0.6s;
+    transition-timing-function: $easing;
+    background-color: $sub-color;
+  }
+
+  &-next:hover:before {
+    width: 100%;
+  }
+
+  &-next a {
+    display: block;
+    width: 100%;
+    padding: pxToRem(16px) 10% pxToRem(16px) 0;
+    color: $md-white;
+
+    @include mq(lg) {
+      padding: pxToRem(24px) 0;
+      padding-right: pxToRem(48px);
+    }
+  }
+
+  // &-title {
+  //   display: block;
+  //   width: 80%;
+  //   overflow: hidden;
+  //   font-weight: 300;
+  //   text-overflow: ellipsis;
+  //   white-space: nowrap;
+  //   -webkit-box-orient: vertical;
+  //   -webkit-line-clamp: 2;
+  // }
 }
+
+/*
+  Pagination
+*/
+// .pagination {
+//   margin: 1.5em 0;
+// }
+
+// .page-numbers {
+//   display: inline-block;
+//   width: 2em;
+//   height: 2em;
+//   padding: 0.25em;
+//   // border: 1px solid $main-color;
+//   border-radius: 50%;
+//   background-color: #fff;
+//   // color: $main-color;
+//   font-weight: bold;
+//   line-height: 1.25;
+//   text-align: center;
+//   text-decoration: none;
+//   vertical-align: top;
+
+//   @include mq(lg) {
+//     width: pxToRem(48px);
+//     height: pxToRem(48px);
+//     font-size: pxToRem(24px);
+//     font-weight: 300;
+//   }
+// }
+// .page-numbers[href]:hover,
+// .page-numbers.current {
+//   background-color: $main-color;
+//   color: #fff;
+// }
+// .page-numbers.prev,
+// .page-numbers.next {
+//   position: relative;
+// }
+
+// .page-numbers.prev:before,
+// .page-numbers.prev:after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   width: pxToRem(34px);
+//   height: pxToRem(34px);
+//   scale: 0.25;
+//   margin: auto;
+//   transform: rotate(45deg);
+//   transition: all 0.3s ease-in-out;
+// }
+
+// .page-numbers.next:before,
+// .page-numbers.next:after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   width: pxToRem(34px);
+//   height: pxToRem(34px);
+//   scale: 0.25;
+//   margin: auto;
+//   transform: rotate(45deg);
+//   transition: all 0.3s ease-in-out;
+// }
+// .page-numbers.prev:before {
+//   right: 0;
+//   left: 0.25em;
+//   background-color: $main-color;
+// }
+
+// .page-numbers.prev:after {
+//   left: 0.5em;
+//   background-color: #fff;
+// }
+// .page-numbers.next:before {
+//   right: 0.25em;
+//   left: 0;
+//   background-color: $main-color;
+// }
+
+// .page-numbers.next:after {
+//   right: 0.5em;
+//   left: 0;
+//   background-color: #fff;
+// }
+// .page-numbers.prev:hover:before,
+// .page-numbers.next:hover:before {
+//   background-color: $md-white;
+// }
+// .page-numbers.prev:hover:after,
+// .page-numbers.next:hover:after {
+//   background-color: $main-color;
+// }
+
+// .page-numbers + .page-numbers {
+//   margin-left: 0.125em;
+// }
+
+// .nav-links {
+//   overflow: hidden;
+// }
+// .nav-previous,
+// .nav-next {
+//   width: 49%;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+// }
+// .nav-previous a:first-line,
+// .nav-next a:first-line {
+//   font-size: 1.5rem;
+// }
+// .nav-previous {
+//   float: left;
+// }
+// .nav-next {
+//   float: right;
+//   text-align: right;
+// }

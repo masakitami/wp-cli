@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_template_part("header"); ?>
 
 <main class="l-main -single">
   <header class="p-hero">
@@ -20,4 +20,4 @@
   <!-- /.l-contents -->
 </main>
 
-<?php get_footer(); ?>
+<?php get_template_part("footer"); ?>

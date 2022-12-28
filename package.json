@@ -9,9 +9,9 @@
   ],
   "scripts": {
     "cleanDefaultThemes": "rimraf ./public/wp-content/themes/twentytwenty && rimraf ./public/wp-content/themes/twentytwentyone && rimraf ./public/wp-content/themes/twentytwentytwo",
-    "cleanup": "rimraf ./public/wp-content/themes/cli",
-    "dev": "npm run cleanup && webpack --watch --config ./webpack.dev.js",
-    "prod": "npm run cleanDefaultThemes && webpack  --config ./webpack.prod.js"
+    "cleanup": "rimraf ./public/wp-content/themes/wp-cli",
+    "dev": "npm run cleanDefaultThemes && webpack --watch --config ./webpack.dev.js",
+    "prod": "npm run cleanup && webpack  --config ./webpack.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",

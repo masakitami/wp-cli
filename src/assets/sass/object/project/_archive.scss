@@ -1,0 +1,13 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+.p-archive {
+  // margin-top: 2.5vw;
+  padding: pxToRem(72px) 0;
+
+  @include mq(lg) {
+    margin-top: 0;
+    padding: pxToRem(120px) 0;
+  }
+}

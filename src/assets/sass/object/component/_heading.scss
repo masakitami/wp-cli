@@ -1,24 +1,118 @@
 @charset 'UTF-8';
-/*
-  Heading
-*/
+@use "sass:math";
+@use "../../global" as *;
 
-.c-heading {
-  &.-primary {
-    $font-size: 20px;
-    margin-bottom: set-size(16px, $font-size);
-    font-size: set-size($font-size);
+//--------------------------------------------
+// コンポーネント
+//--------------------------------------------
+%c-heading {
+  $this: &;
+  display: block;
+
+  .c-heading.-elem {
+    display: block;
   }
 
-  &.-center {
-    text-align: center;
+  .c-heading.-elem.-main {
+    margin-bottom: pxToRem(8px);
+    font-family: $eng-set-primary;
+    font-size: pxToRem(32px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1;
+
+    @include mq(sm) {
+      font-size: pxToRem(32px);
+      line-height: 1;
+    }
+
+    @include mq(lg) {
+      font-size: pxToRem(64px);
+    }
+  }
+
+  // blogのタイトル文字だけマージンを多くとる(文字と棒が重なるため)
+  .c-heading.-elem.-main.-blog {
+    margin-bottom: pxToRem(10px);
+  }
+
+  .c-heading.-elem.-stick {
+    margin-bottom: pxToRem(8px);
+    font-size: 0;
+  }
+
+  .c-heading.-elem.-stick:after {
+    content: "";
+    display: inline-block;
+    width: pxToRem(50px);
+    height: pxToRem(2px);
+    background-color: $main-color;
+    speak: none;
+
+    @include mq(sm) {
+      width: pxToRem(95px);
+      height: pxToRem(2px);
+    }
+  }
+
+  .c-heading.-elem.-stick.-adjustMt:after {
+    @include mq(sm) {
+      margin-top: pxToRem(12px);
+    }
+  }
+
+  .c-heading.-elem.-sub {
+    display: block;
+    // @include lh-crop();
+    font-size: pxToRem(10px);
+
+    @include mq(lg) {
+      font-size: pxToRem(16px);
+      font-style: normal;
+      font-weight: 400;
+    }
   }
 }
+//--------------------------------------------
+// 横書きのタイトル
+//--------------------------------------------
+.c-heading.-normal {
+  $this: &;
+  @extend %c-heading;
+}
 
-@include mq(tab) {
-  .c-heading {
-    &.-primary {
-      font-size: 2em;
+//--------------------------------------------
+// 縦書きのタイトル
+//--------------------------------------------
+.c-heading.-sideways {
+  @extend %c-heading;
+
+  // PCのみに新しいスタイルを上書き。スマホ時はnoramlのスタイル
+  @include mq(md) {
+    transform: translateY(-15%);
+  }
+
+  @include mq(sm) {
+    $this: &;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: translateY(-9%);
+
+    .c-heading.-elem.-main {
+      margin-left: pxToRem(8px);
+      // @include lh-crop();
+    }
+
+    .c-heading.-elem.-stick {
+      margin-left: pxToRem(8px);
+
+      &:after {
+        display: inline-block;
+        width: pxToRem(2px);
+        height: pxToRem(95px);
+        // background-color: $main-color;
+        speak: none;
+      }
     }
   }
 }

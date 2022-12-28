@@ -1,0 +1,150 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+.p-cv {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+
+  &__inner {
+    width: 100%;
+
+    @include mq(lg) {
+      width: 100vw;
+      margin: 0 calc(50% - 50vw);
+    }
+
+    @include mq(xxxl) {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  @at-root &__elem {
+    position: relative;
+    width: 100%;
+
+    @include mq(lg) {
+      width: 50%;
+      padding: 0;
+    }
+  }
+
+  &__elem.-contact {
+    width: 100vw;
+    background-color: $sub-color;
+    color: $md-white;
+  }
+
+  &__elem.-contact:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    transition-duration: 0.6s;
+    transition-timing-function: $easing;
+    // transition-delay: 0.5s, 1.5s;
+    background-color: $base-color;
+    speak: none;
+  }
+
+  &__elem.-contact:hover:before {
+    width: 100%;
+  }
+
+  &__elem.-download {
+    background-color: $main-color;
+    color: $md-white;
+  }
+
+  &__elem.-magazine {
+    width: 100%;
+    background-color: $accent-color;
+  }
+
+  @at-root &__elem.-inner {
+    width: 100%;
+    padding: pxToRem(30px) 0 pxToRem(48px) pxToRem(20px);
+
+    @include mq(lg) {
+      display: block;
+      // width: 100%;
+      padding: pxToRem(72px) 0 pxToRem(88px) 0;
+    }
+  }
+
+  &__text {
+    padding-top: pxToRem(20px);
+    font-size: pxToRem(12px);
+
+    @include mq(lg) {
+      padding-top: 0;
+      font-size: pxToRem(16px);
+    }
+  }
+
+  &__text.-magazine {
+    padding-top: 0;
+  }
+
+  &__anchor {
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: 99;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+      @include mq(lg) {
+        content: "";
+        position: absolute;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__title {
+    display: block;
+  }
+
+  &__title.-main {
+    font-size: pxToRem(16px);
+    font-style: normal;
+    font-weight: 500;
+
+    @include mq(lg) {
+      margin-bottom: pxToRem(16px);
+      font-size: pxToRem(24px);
+      @include lh-crop();
+    }
+  }
+
+  &__title.-sub {
+    font-family: $eng-set-primary;
+    font-size: pxToRem(12px);
+    @include mq(lg) {
+      margin-bottom: pxToRem(40px);
+      font-size: pxToRem(16px);
+    }
+  }
+
+  &__button {
+    margin-right: pxToRem(20px);
+    margin-left: auto;
+
+    @include mq(lg) {
+      margin-right: pxToRem(72px);
+      margin-left: 0;
+    }
+  }
+}

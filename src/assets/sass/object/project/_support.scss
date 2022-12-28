@@ -1,0 +1,388 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+.p-support {
+  $this: &;
+
+  &__inner {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+  }
+
+  &__inner.-blue {
+    background-color: rgba($base-color, 0.1);
+  }
+
+  //--------------------------------------------
+  // サブページのContents
+  //--------------------------------------------
+  @at-root &__contents {
+    position: relative;
+    @include mq(lg) {
+      width: 60%;
+      margin-inline: auto;
+      // padding-top: pxToRem(180px);
+    }
+  }
+
+  @at-root &__contents.-picArea {
+    @include mq(lg) {
+      width: 100%;
+      padding-top: 0;
+    }
+  }
+
+  @at-root &__contents.-target {
+    @include mq(lg) {
+      width: 80%;
+      padding-top: 0;
+    }
+  }
+
+  @at-root &__contentsPic {
+    width: 100%;
+    margin-right: auto;
+    margin-bottom: pxToRem(32px);
+    margin-left: auto;
+
+    img {
+      width: 100%;
+    }
+
+    @include mq(xs) {
+      width: 80%;
+    }
+
+    @include mq(sm) {
+      width: 60%;
+      margin-inline: auto;
+    }
+
+    @include mq(md) {
+      width: 60%;
+    }
+
+    @include mq(lg) {
+      width: 100%;
+      margin-bottom: pxToRem(100px);
+    }
+  }
+
+  @at-root &__contentsPicDescs {
+    @include mq(lg) {
+      width: 80%;
+      margin-inline: auto;
+    }
+  }
+
+  @at-root &__contentsPicDesc {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: pxToRem(32px);
+
+    @include mq(lg) {
+      margin-bottom: 0;
+    }
+  }
+
+  @at-root &__contentsPicDesc:not(:last-child) {
+    @include mq(lg) {
+      margin-bottom: pxToRem(40px);
+    }
+  }
+
+  @at-root &__contentsPicDesc__title {
+    flex-basis: 25%;
+    font-size: pxToRem(16px);
+
+    @include mq(lg) {
+      flex-basis: 30%;
+    }
+  }
+
+  @at-root &__contentsPicDesc__title .-main {
+    font-weight: 600;
+    line-height: 1;
+
+    @include mq(lg) {
+      flex-basis: auto;
+      margin-bottom: pxToRem(4px);
+      font-size: pxToRem(32px);
+    }
+  }
+
+  @at-root &__contentsPicDesc__title.-sub {
+    color: $base-color;
+    font-size: pxToRem(10px);
+    font-weight: 300;
+    line-height: 1;
+
+    @include mq(lg) {
+      flex-basis: auto;
+      font-size: pxToRem(12px);
+    }
+  }
+
+  @at-root &__contentsPicDesc__list {
+    flex-basis: 75%;
+    transform: translateY(-2%);
+
+    @include mq(lg) {
+      flex-basis: 70%;
+    }
+  }
+
+  @at-root &__contentsPicDesc__listItem {
+    margin-bottom: pxToRem(4px);
+    padding-left: 1em;
+    text-indent: -0.5em;
+
+    @include mq(lg) {
+      margin-bottom: 0;
+      font-size: pxToRem(20px);
+      // font-size: pxToRem(24px);
+    }
+  }
+
+  //--------------------------------------------
+  // サブページのTarget
+  //--------------------------------------------
+
+  @at-root &__targetList {
+    @include mq(lg) {
+      display: flex;
+      gap: 0 pxToRem(100px);
+    }
+  }
+
+  @at-root &__targetItem {
+    margin-bottom: pxToRem(32px);
+    @include mq(lg) {
+      flex-basis: 45%;
+      margin-bottom: 0;
+    }
+  }
+
+  @at-root &__targetTitle {
+    margin-bottom: pxToRem(16px);
+    font-size: pxToVw(16px, 375px);
+    font-size: clamp(12px, pxToVw(14.75px, 375px), 18px);
+    font-weight: 600;
+    text-align: left;
+
+    @include mq(lg) {
+      margin-bottom: 0;
+      font-size: pxToVw(30px, 1366px);
+      font-weight: 600;
+      text-align: left;
+    }
+  }
+
+  @at-root &__targetPic {
+    width: 20%;
+    margin-right: auto;
+    margin-bottom: pxToRem(24px);
+    margin-left: auto;
+    text-align: center;
+
+    @include mq(lg) {
+      width: 100%;
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+
+  @at-root &__targetDl.-nayami {
+    width: 55%;
+    margin-inline: auto;
+    @include mq(lg) {
+      width: 100%;
+    }
+  }
+
+  @at-root &__targetDl.-kitai {
+    width: 56%;
+    margin-inline: auto;
+    @include mq(lg) {
+      width: 100%;
+    }
+  }
+
+  @at-root &__targetDesc {
+    width: 100%;
+    margin-inline: auto;
+
+    @include mq(lg) {
+      width: 100%;
+      font-size: pxToRem(20px);
+    }
+  }
+
+  //--------------------------------------------
+  // サブページのStep
+  //--------------------------------------------
+  @at-root &__stepList {
+    position: relative;
+    width: 90%;
+    margin-left: auto;
+    line-height: 1;
+
+    @include mq(lg) {
+      width: 100%;
+      min-height: auto;
+      margin-left: 0;
+      padding-left: 3%;
+    }
+  }
+
+  // //青の縦線
+  // @at-root &__stepList:before {
+  //   content: "";
+  //   position: absolute;
+  //   top: pxToRem(55px);
+  //   left: pxToRem(-36px);
+  //   width: pxToRem(1.5px);
+  //   height: 62%;
+  //   max-height: 222px;
+  //   background-color: $base-color;
+
+  //   @include mq(lg) {
+  //     content: "";
+  //     position: absolute;
+  //     top: 14%;
+  //     left: 0%;
+  //     width: pxToRem(1.5px);
+  //     height: 73%;
+  //     background-color: $base-color;
+  //   }
+  // }
+  @at-root &__stepStick {
+    display: grid;
+    position: relative;
+    grid-template:
+      "line circle1" 1fr
+      "line circle2" 1fr
+      "line circle3" 1fr /
+      auto auto;
+    transform: translateX(-50%);
+
+    &__line {
+      display: block;
+      position: absolute;
+      top: 10%;
+      left: 95%;
+      grid-area: line;
+      width: 2px;
+      height: 65%;
+      background-color: $base-color;
+
+      @include mq(xs) {
+        left: 97%;
+      }
+
+      @include mq(sm) {
+        left: 75%;
+      }
+
+      @include mq(lg) {
+        left: 95%;
+      }
+
+      &.-mvv {
+        top: 2%;
+        height: 98%;
+        transform: unset;
+        background-color: $main-color;
+
+        @include mq(lg) {
+          top: 3%;
+          height: 86%;
+          transform: unset;
+        }
+      }
+    }
+
+    &__circle {
+      position: absolute;
+      top: 20%;
+      left: -50%;
+      grid-area: circle1;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: $base-color;
+
+      @include mq(lg) {
+        left: -26%;
+      }
+
+      &.-first {
+        grid-area: circle1;
+      }
+
+      &.-second {
+        grid-area: circle2;
+      }
+
+      &.-third {
+        grid-area: circle3;
+      }
+    }
+  }
+
+  @at-root &__stepItem {
+    position: relative;
+    margin-bottom: pxToRem(40px);
+
+    @include mq(lg) {
+      position: relative;
+      margin-bottom: pxToRem(40px);
+      padding-left: pxToRem(20px);
+    }
+  }
+
+  // listの横についている青の円
+  // @at-root &__stepItem:before {
+  //   content: "";
+  //   display: block;
+  //   position: absolute;
+  //   top: pxToRem(45px);
+  //   left: pxToRem(-40px);
+  //   width: pxToRem(10px);
+  //   height: pxToRem(10px);
+  //   border-radius: 50%;
+  //   background-color: $base-color;
+  //   speak: none;
+
+  //   @include mq(lg) {
+  //     top: 48%;
+  //     left: -4%;
+  //     width: pxToRem(15px);
+  //     height: pxToRem(15px);
+  //   }
+  // }
+
+  @at-root &__stepDesc {
+    line-height: 1.5;
+
+    @include mq(lg) {
+      font-size: pxToRem(20px);
+    }
+  }
+
+  @at-root &__stepTitle {
+    margin-bottom: pxToRem(8px);
+    font-size: pxToRem(16px);
+    font-weight: 600;
+
+    @include mq(lg) {
+      margin-bottom: pxToRem(24px);
+      font-size: pxToRem(32px);
+    }
+  }
+}
+
+//--------------------------------------------
+// サブページのmvv
+//--------------------------------------------

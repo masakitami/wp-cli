@@ -1,0 +1,424 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+/*
+  mainVisual
+*/
+.p-mainVisual {
+  $this: &;
+  position: relative;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+
+  //--------------------------------------------
+  // タイトル
+  //--------------------------------------------
+  &__title {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    transform: translateY(pxToRem(-10px));
+
+    @include mq(sm) {
+      transform: translateY(pxToRem(-50px));
+    }
+
+    @include mq(md) {
+      transform: translateY(pxToRem(-30px));
+    }
+
+    @include mq(lg) {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      min-height: pxToRem(500px); //タイトルの文字の改行を防ぐため
+      transform: translateY(-15%);
+    }
+
+    // safari
+    @include safari() {
+      top: 0;
+      bottom: 0;
+      min-height: auto;
+      transform: translateY(-12%);
+
+      @include mq(sm) {
+        top: 0;
+        // transform: translateY(-4%);
+      }
+
+      // 992px以上
+      @include mq(lg) {
+        top: 0;
+        // transform: translateY(-45%);
+      }
+
+      // 1600px以上
+      @include mq(xxl) {
+        top: 0;
+        // transform: translateY(-55%);
+      }
+    }
+  }
+
+  //--------------------------------------------
+  // タイトルの中のテキスト
+  //--------------------------------------------
+  @at-root &__text {
+    // min-height: 500px;
+    color: $secondary-text-color;
+    writing-mode: vertical-rl;
+  }
+
+  //--------------------------------------------
+  // タイトルの中のテキストの中のメインタイトル
+  //--------------------------------------------
+  @at-root &__text.-main {
+    margin-top: -3%;
+    font-family: $mincho-set-primary;
+    font-size: clamp(pxToRem(40px), pxToVw(40px, 768px), pxToRem(64px));
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    line-height: 1.35;
+
+    @include mq(sm) {
+      font-size: clamp(pxToRem(32px), pxToVw(32px, 1366px), pxToRem(32px));
+    }
+
+    @include mq(lg) {
+      margin-top: -2%;
+      font-size: pxToRem(64px);
+      font-size: clamp(pxToRem(32px), pxToVw(64px, 1366px), pxToRem(80px));
+      letter-spacing: 0.2em;
+      line-height: 1.35;
+    }
+
+    &:last-child {
+      margin-left: pxToRem(15px);
+
+      @include mq(lg) {
+        margin-left: pxToRem(40px);
+      }
+    }
+  }
+
+  //--------------------------------------------
+  // タイトルの中のテキスト中の強調(丸)の装飾
+  //--------------------------------------------
+  @at-root &__emphasis {
+    display: inline !important;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 40%;
+      right: 5%;
+      width: pxToRem(6px);
+      height: pxToRem(6px);
+      border-radius: 50%;
+      background-color: $secondary-text-color;
+      speak: none;
+
+      @include mq(lg) {
+        top: 40%;
+        right: pxToRem(5px);
+        width: pxToRem(9px);
+        height: pxToRem(9px);
+      }
+
+      // firefox
+      @include firefox() {
+        content: "";
+        transform: translateX(20px);
+      }
+
+      // safari
+      @include safari() {
+        right: -5%;
+        // @include mq(lg) {
+        //   right: pxToRem(-10px);
+        // }
+      }
+    }
+  }
+
+  //--------------------------------------------
+  // できるの"る"が若干左に寄っているため調整
+  //--------------------------------------------
+  @at-root &__emphasis.-slide-right {
+    transform: translateX(1%);
+  }
+
+  //--------------------------------------------
+  // タイトルの中のテキストの中のサブタイトル
+  //--------------------------------------------
+  @at-root &__text.-sub {
+    height: 400px;
+    font-size: pxToRem(12px);
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    line-height: 1.75;
+
+    @include mq(lg) {
+      font-size: pxToRem(16px);
+      letter-spacing: 0.35em;
+      line-height: 1.75;
+    }
+  }
+
+  //--------------------------------------------
+  // メインビジュアルの写真
+  //--------------------------------------------
+  @at-root &.-pic {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+  }
+}
+
+//--------------------------------------------
+// 下層ページのメインビジュアル(代表紹介のみ)
+//--------------------------------------------
+.p-mainVisual.-sub {
+  .p-mainVisual__title {
+    position: static;
+    min-height: auto;
+    margin-bottom: pxToRem(64px);
+    transform: unset;
+
+    @include mq(lg) {
+      margin-bottom: pxToRem(140px);
+    }
+  }
+
+  .p-mainVisual__mainTitle {
+    margin-bottom: pxToRem(8px);
+    color: $base-color;
+    font-size: pxToRem(64px);
+    line-height: 1;
+
+    @include mq(lg) {
+      margin-bottom: pxToRem(16px);
+      color: $base-color;
+      font-size: pxToRem(128px);
+      line-height: 1;
+    }
+  }
+
+  .p-mainVisual__subTitle {
+    font-size: pxToRem(16px);
+    font-weight: 600;
+
+    @include mq(lg) {
+      font-size: pxToRem(32px);
+    }
+  }
+
+  .p-mainVisual__pic {
+    width: 60%;
+    margin-inline: auto;
+
+    @include mq(lg) {
+      width: 30%;
+      transform: translateY(-20%);
+    }
+  }
+}
+
+//--------------------------------------------
+// 下層ページのメインビジュアル(代表紹介以外)
+//--------------------------------------------
+.p-mainVisual.-third {
+  // display: grid;
+  // grid-template-columns: auto;
+  // grid-template-rows: 1fr 0.5fr 1fr;
+  // display: flex;
+  // flex-direction: column;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+
+  @include mq(sm) {
+    // display: grid;
+    // grid-template-columns: 1fr 2fr 3fr;
+    // grid-template-rows: 1fr 1fr 1fr;
+    // width: 100vw;
+    // margin: 0 calc(50% - 50vw);
+    // margin-bottom: pxToRem(120px);
+    display: flex;
+    padding-top: pxToRem(136px);
+    // padding-bottom: pxToRem(80px);
+  }
+
+  .p-mainVisual__title {
+    display: block;
+    position: static;
+    position: relative;
+    z-index: 2;
+    // grid-column: 2/4;
+    grid-row: 1/2;
+    overflow: visible;
+    transform: unset;
+    transform: translateY(35%);
+    font-size: clamp(pxToRem(64px), pxToVw(64px, 1366px), pxToRem(104px));
+    line-height: 1;
+
+    @include mq(sm) {
+      display: inline-block;
+      // grid-column: 1/2;
+      // grid-row: 1/2;
+      min-height: 0;
+      // background-color: red;
+      transform: unset;
+      transform: translateX(20%) translateY(-40%);
+    }
+
+    @include mq(md) {
+      transform: translateX(20%) translateY(-25%);
+    }
+
+    // @include safari() {
+    //   @include mq(sm) {
+    //     transform: translateY(10%);
+    //   }
+    // }
+  }
+
+  .p-mainVisual__inner {
+    display: inline-block;
+    padding: pxToRem(20px) 10% pxToRem(20px) 5%;
+    // border-radius: pxToRem(40px);
+    border-bottom-right-radius: pxToRem(20px);
+    background-color: $md-white;
+    background-color: #fff;
+
+    @include mq(sm) {
+      padding: pxToRem(30px) pxToRem(80px) pxToRem(40px) 0;
+      border-radius: pxToRem(30px);
+    }
+  }
+
+  .p-mainVisual__mainTitle {
+    margin-bottom: pxToRem(8px);
+    color: $base-color;
+    font-size: pxToRem(48px);
+    font-size: clamp(pxToRem(48px), pxToVw(48px, 375px), pxToRem(64px));
+    line-height: 1;
+
+    @include mq(lg) {
+      margin-bottom: pxToRem(16px);
+      color: $base-color;
+      font-size: clamp(pxToRem(64px), pxToVw(112px, 1366px), pxToRem(128px));
+      line-height: 1;
+    }
+  }
+
+  .p-mainVisual__subTitle {
+    font-size: pxToRem(16px);
+    font-weight: 600;
+
+    @include mq(lg) {
+      font-size: pxToRem(32px);
+    }
+  }
+
+  .p-mainVisual__pic {
+    @include mq(sm) {
+      display: block;
+      // grid-column: 2/4;
+      // grid-row: 2/4;
+    }
+  }
+}
+
+.p-test {
+  padding-top: pxToRem(80px);
+
+  @include mq(sm) {
+    padding-top: 0;
+  }
+  &__pic {
+    display: block;
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include mq(sm) {
+      width: 100vw;
+      margin-right: calc(50% - 50vw);
+    }
+  }
+
+  &__header {
+    position: relative;
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+
+    @include mq(sm) {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  &__headerInner {
+    display: inline-block;
+    position: absolute;
+    top: pxToRem(-80px);
+    padding: pxToRem(20px) pxToRem(40px);
+    padding-left: 5%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: $md-white;
+
+    @include mq(sm) {
+      position: absolute;
+      top: -20%;
+      padding: pxToRem(24px) pxToRem(56px);
+      padding-left: 0;
+      border-radius: pxToRem(40px);
+      background-color: $md-white;
+    }
+
+    @include mq(xxl) {
+      padding: pxToRem(48px) pxToRem(80px);
+      padding-left: 0;
+    }
+  }
+
+  &__mainTitle {
+    margin-bottom: pxToRem(8px);
+    color: $base-color;
+    font-size: pxToRem(24px);
+    font-size: clamp(pxToRem(24px), pxToVw(48px, 375px), pxToRem(64px));
+    line-height: 1;
+
+    @include mq(lg) {
+      margin-bottom: pxToRem(16px);
+      overflow: visible;
+      color: $base-color;
+      font-size: clamp(pxToRem(64px), pxToVw(112px, 1366px), pxToRem(128px));
+      line-height: 1;
+    }
+  }
+
+  &__subTitle {
+    font-size: pxToRem(16px);
+    font-size: clamp(pxToRem(12px), pxToVw(16px, 375px), pxToRem(16px));
+    font-weight: bold;
+
+    @include mq(lg) {
+      font-size: clamp(pxToRem(28px), pxToVw(28px, 1336px), pxToRem(32px));
+    }
+  }
+}

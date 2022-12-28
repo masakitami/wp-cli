@@ -1,0 +1,16 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+.p-subPage {
+  $this: &;
+
+  &__inner {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+  }
+
+  // &__inner.-blue {
+  //   background-color: rgba($base-color, 0.1);
+  // }
+}

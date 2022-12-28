@@ -1,0 +1,29 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Container
+-----------------------------------------------------*/
+
+.l-container {
+  margin: 0 auto;
+
+  &:not([data-enabled]) {
+    width: 90%;
+    max-width: 1200px;
+  }
+
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      &[data-enabled~="#{$device}"] {
+        width: 90%;
+        max-width: 1200px;
+      }
+      &[data-disabled~="#{$device}"] {
+        width: auto;
+        max-width: none;
+      }
+    }
+  }
+}

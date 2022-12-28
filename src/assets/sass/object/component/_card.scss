@@ -1,25 +1,30 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
 /*
   Card
 */
-
 .c-card {
-  display: block;
+  display: flex;
   position: relative;
-  padding-top: percentage(1 / 1.414);
+  flex: 1 1 auto;
+  flex-direction: column;
   color: inherit;
   text-decoration: none;
 
   &__body {
-    padding: 1rem;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    order: 1;
   }
 
   &__thumbnail {
-    position: absolute;
-    top: 0;
+    order: 0;
+  }
 
-    img {
-      width: 100%;
-    }
+  &__image {
+    width: 100%;
   }
 }

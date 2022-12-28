@@ -1,0 +1,8 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+.p-blog {
+  position: relative;
+  z-index: 1;
+}

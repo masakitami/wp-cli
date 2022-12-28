@@ -1,0 +1,148 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+/*
+  Footer
+*/
+.p-footer {
+  position: relative;
+
+  &__list {
+    @include mq(sm) {
+      width: 60%;
+      margin-left: 0;
+      margin-inline: auto;
+    }
+
+    @include mq(lg) {
+      margin-left: auto;
+    }
+  }
+
+  &__elem:first-child {
+    @include mq(xxl) {
+      margin-right: pxToRem(120px);
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+    width: 80%;
+    transform: translateX(-10%);
+
+    @include mq(sm) {
+      width: auto;
+      transform: unset;
+    }
+
+    @include mq(lg) {
+      width: 70%;
+    }
+  }
+
+  // &__list :nth-child(even) {
+  //   padding-left: pxToVw(24px, 375px);
+
+  //   @include mq(lg) {
+  //     padding-left: 0;
+  //   }
+  // }
+
+  &__item {
+    display: inline-block;
+    // padding-left: pxToRem(16px);
+    font-size: pxToRem(12px);
+
+    @include mq(lg) {
+      padding-left: 0;
+      font-size: pxToRem(16px);
+    }
+  }
+
+  // &__item:not(:last-child) {
+  //   margin-bottom: pxToRem(24px);
+
+  //   @include mq(lg) {
+  //     font-size: pxToRem(16px);
+  //   }
+  // }
+
+  &__item.-sub {
+    margin-bottom: pxToRem(8px);
+  }
+
+  &__subTitle {
+    margin-bottom: pxToRem(8px);
+  }
+
+  &__anchor {
+    display: inline;
+    position: relative;
+    transition-duration: 0.6s;
+    transition-timing-function: $easing;
+    font-weight: 300;
+
+    @include hover {
+      color: $base-color;
+    }
+  }
+
+  &__anchor:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: pxToRem(-10px);
+    width: pxToRem(4px);
+    height: pxToRem(4px);
+    border-radius: 50%;
+    background-color: $base-color;
+
+    @include mq(lg) {
+      top: 50%;
+      left: pxToRem(-12px);
+    }
+  }
+
+  &__sns {
+    width: 100%;
+    padding: 4em 0;
+
+    @include mq(sm) {
+      margin-top: auto;
+      padding: 0;
+    }
+  }
+
+  &__sns__elem {
+    width: 15%;
+
+    @include mq(lg) {
+      width: 40%;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__sns__elem:not(:last-child) {
+    margin-right: pxToRem(10px);
+  }
+
+  // &__sns__elem.-linkedIn {
+  //   width: 13%;
+
+  //   @include mq(sm) {
+  //     width: 35%;
+  //   }
+  // }
+
+  // &__sns__elem:not(:last-child) {
+  //   margin-right: pxToRem(8px);
+  //   @include mq(lg) {
+  //     margin-right: pxToRem(16px);
+  //   }
+  // }
+}

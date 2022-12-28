@@ -1,14 +1,18 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
 /*
   Sub
 -----------------------------------------------------*/
 
 .l-sub {
+  position: relative;
 }
 
-@include mq(tab) {
-  .l-sub {
-    width: percentage(336px / $content-width);
-    float: right;
-  }
-}
+// @include mq(md) {
+//   .l-sub {
+//     width: calc(336px / $content-width);
+//     float: right;
+//   }
+// }

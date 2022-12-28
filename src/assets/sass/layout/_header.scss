@@ -1,19 +1,47 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
 /*
   Header
 -----------------------------------------------------*/
 .l-header {
-  position: fixed;
-  z-index: 2;
+  position: relative;
+  z-index: 5;
   top: 0;
   right: 0;
   left: 0;
+  padding-top: pxToRem(24px);
+  padding-bottom: pxToRem(166px);
 
-  .admin-bar & {
-    top: set-size(46px);
+  @include mq(lg) {
+    padding-top: pxToRem(44px);
+  }
 
-    @include mq(tab) {
-      top: set-size(32px);
-    }
+  @include mq(xl) {
+    padding-bottom: clamp(pxToRem(120px), calc((var(--vh, 1vh) * 100) - (116px + 474px)), pxToRem(300px));
+  }
+
+  // @include mq(xxl) {
+  //   padding-bottom: calc((var(--vh, 1vh) * 100) - (104px + 474px));
+  // }
+}
+
+.l-header.-sub {
+  // position: fixed;
+  // top: 3.5%;
+  // padding-top: 0;
+  // padding-bottom: 0;
+  // padding: 0;
+  padding-bottom: pxToRem(88px);
+
+  @include mq(lg) {
+    position: relative;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-top: pxToRem(16px);
+    padding-bottom: pxToRem(16px);
   }
 }

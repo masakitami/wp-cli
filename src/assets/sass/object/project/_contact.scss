@@ -1,0 +1,16 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+.wpforms-submit-container {
+  text-align: center;
+}
+
+div.wpforms-container-full .wpforms-form button[type="submit"] {
+  padding: pxToRem(16px) pxToRem(64px);
+  border-radius: pxToRem(50px);
+  border-color: $base-color !important;
+  background: $base-color !important;
+  color: $md-white !important;
+  font-size: pxToRem(16px);
+}

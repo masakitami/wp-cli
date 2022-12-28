@@ -1,20 +1,10 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
 /*
   Logo
 */
-.p-logo,
-.custom-logo-link {
-  display: inline-block;
-  padding: 0.5em 0;
-  color: $main-color;
-  font-size: 1.5em;
-  font-weight: bold;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  text-decoration: none;
-
-  @include mq(tab) {
-    padding: 1em 0;
-    // font-size: 1.5em;
-  }
+.p-logo {
+  $this: &;
 }

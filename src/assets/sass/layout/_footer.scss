@@ -1,26 +1,18 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
 /*
   Footer
 -----------------------------------------------------*/
-
 .l-footer {
-  padding: 1.5em 0;
+  // padding: pxToRem(24px) pxToRem(24px) pxToRem(24px) pxToRem(40px);
+  width: 100%;
+  padding: pxToRem(48px) 0;
+  // padding-left: pxToRem(48px);
   clear: both;
-  background-color: $main-color;
-  color: $hint-text-color;
+  margin-inline: auto;
 
-  @include mq(tab) {
-    padding: 3em 0;
-  }
-
-  &__text {
-    margin-top: 1em;
-    color: $sub-color;
-    font-size: 0.75em;
-    text-align: center;
-
-    @include mq(tab) {
-      text-align: left;
-    }
+  @include mq(lg) {
+    padding-top: pxToRem(96px);
   }
 }

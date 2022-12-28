@@ -1,0 +1,48 @@
+@charset 'UTF-8';
+@use "../setting" as *;
+@use "sass:map";
+
+//  IE11
+//--------------------------------------------
+@mixin ie11() {
+  @media all and (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+// safari
+//--------------------------------------------
+@mixin safari {
+  @at-root _::-webkit-full-page-media,
+    _:future,
+    :root & {
+    @content;
+  }
+}
+
+// edge
+//--------------------------------------------
+@mixin edge() {
+  @at-root _:lang(_),
+    _::-ms-value,
+    _::-internal-media-controls-overlay-cast-button,
+    & {
+    @content;
+  }
+}
+
+// firefox
+//--------------------------------------------
+@mixin firefox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+// Chrome
+//--------------------------------------------
+@mixin chrome {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @content;
+  }
+}

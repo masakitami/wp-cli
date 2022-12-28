@@ -1,23 +1,14 @@
 @charset 'UTF-8';
-
+@use "sass:math";
 /* =====================================================
   1.0 - Foundation
 ===================================================== */
-@import "inc/setting";
-@import "inc/functions";
-@import "inc/mixin";
-@import "foundation/reset";
-@import "foundation/base";
+@use "foundation";
 
 /* =====================================================
   2.0 - Layout
 ===================================================== */
-@import "Layout/centering";
-@import "Layout/header";
-@import "Layout/contents";
-@import "Layout/main";
-@import "Layout/sub";
-@import "Layout/footer";
+@use "layout";
 
 /* =====================================================
   3.0 - Object
@@ -26,32 +17,14 @@
 /*
   3.1 - Component
 -----------------------------------------------------*/
-@import "object/component/grid";
-@import "object/component/button";
-@import "object/component/media";
-@import "object/component/card";
-@import "object/component/heading";
+@use "object/component";
 
 /*
   3.2 - Project
 -----------------------------------------------------*/
-@import "object/project/header";
-@import "object/project/global-nav";
-@import "object/project/logo";
-@import "object/project/hero";
-@import "object/project/project";
-@import "object/project/article";
-@import "object/project/author";
-@import "object/project/comments";
-@import "object/project/pagination";
-@import "object/project/post-categories";
-@import "object/project/searchform";
-@import "object/project/hamburger";
-@import "object/project/widget";
+@use "object/project";
 
 /*
   3.2 - Utility
 -----------------------------------------------------*/
-@import "object/utility/margin";
-@import "object/utility/break";
-@import "object/utility/screen-reader-text";
+@use "object/utility";

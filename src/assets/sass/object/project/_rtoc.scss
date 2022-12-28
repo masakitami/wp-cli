@@ -1,0 +1,12 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
+
+.rtoc-mokuji-content {
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.rtoc-mokuji-content .rtoc-mokuji.level-1 li {
+  padding: 16px 0 0 !important;
+}

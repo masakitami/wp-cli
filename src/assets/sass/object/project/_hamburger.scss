@@ -1,52 +1,49 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../../global" as *;
 /*
   Hamburger
 */
-$position: right;
-$line-color: $primary-text-color;
-$active-line-color: #fff;
-
-// setting
-$right: 2.5%;
-$left: auto;
-@if $position == left {
-  $right: auto;
-  $left: 2.5%;
-}
-
 .p-hamburger {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  right: $right;
-  bottom: 0;
-  left: $left;
-  width: 24px;
-  height: 24px;
-  margin: auto 0;
-  transition: all 0.3s ease-in-out;
+  $this: &;
+  position: fixed;
+  z-index: 20;
+  right: 5%;
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  transition-property: transform;
+  transition-duration: 0.6s;
+  transition-timing-function: $easing;
   border: 0;
-  outline: 0;
-  background-color: transparent;
-  box-shadow: 0 0 40px transparent;
+  border-radius: 50%;
+  background-color: $main-color;
+  box-shadow: 0 0 16px rgba($main-color, 60%);
+  text-align: center;
 
-  &:focus {
-    box-shadow: 0 0 0 1px #212121;
+  @include mq(lg) {
+    display: none;
+  }
+
+  .js-hide & {
+    transform: translateY(-100%);
   }
 
   &__line {
     display: block;
     position: absolute;
+    z-index: inherit;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 75%;
+    width: 30px;
     height: 2px;
     margin: auto;
-    transition: transform 0.2s ease-in-out;
-    border-radius: 0.25em;
-    background-color: $line-color;
+    transition-property: transform, background-color, opacity, transform-origin;
+    transition-duration: $duration;
+    transition-timing-function: $easing;
+    border-radius: 1em;
   }
 
   &__line:before,
@@ -58,37 +55,76 @@ $left: auto;
     height: 100%;
     transition: inherit;
     border-radius: inherit;
-    background-color: inherit;
+    background-color: $md-white;
   }
 
   &__line:before {
-    top: -5px;
+    transform: translate3d(0, -9px, 0);
   }
 
   &__line:after {
-    top: 5px;
+    transform: translate3d(0, -1px, 0);
   }
 
-  @include mq(tab) {
-    display: none;
+  &__label {
+    display: inline-block;
+    position: absolute;
+    top: 34px;
+    right: 0;
+    left: 2px;
+    color: $md-white;
+    font-size: pxToRem(10px);
+    font-weight: bold;
+    letter-spacing: 0.1em;
   }
+
+  // &:hover,
+  // &:focus {
+  //   #{$this}__line {
+  //     &::before {
+  //       transform: translate3d(40%, -175%, 0) rotate(45deg) scaleX(0.5);
+  //     }
+  //     &::after {
+  //       transform: translate3d(40%, -175%, 0) rotate(-45deg) scaleX(0.5);
+  //     }
+  //   }
+  // }
 
   .is-drawerActive & {
     &__line {
-      background-color: transparent;
+      background-color: unset;
 
-      &:before,
-      &:after {
-        top: 0;
-        background-color: $active-line-color;
-      }
+      // &:before,
+      // &:after {
+      //   transform: translate3d(20px, 0, 0);
+      // }
 
       &:before {
-        transform: rotate(-45deg);
+        transform: translate3d(0, -5px, 0) rotate(-45deg) scaleX(0.5);
       }
       &:after {
-        transform: rotate(45deg);
+        transform: translate3d(0, -5px, 0) rotate(45deg) scaleX(0.5);
       }
     }
+
+    // &:hover,
+    // &:focus {
+    //   #{$this}__line {
+    //     background-color: unset;
+
+    //     &::before,
+    //     &::after {
+    //       // transform-origin: 0% 50%;
+    //       transition-property: transform, background-color, opacity, transform-origin;
+    //       // transition-property: transform;
+    //     }
+    //     &::before {
+    //       transform: translate3d(0%, -175%, 0) rotate(-45deg) scaleX(0.5);
+    //     }
+    //     &::after {
+    //       transform: translate3d(0%, -175%, 0) rotate(45deg) scaleX(0.5);
+    //     }
+    //   }
+    // }
   }
 }

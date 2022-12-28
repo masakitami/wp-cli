@@ -12,7 +12,7 @@ const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 // ==============================================
 const dir = {
   src: "src",
-  dist: "public/wp-content/themes/cli",
+  dist: "public/wp-content/themes/wp-cli",
   assets: "assets",
 };
 

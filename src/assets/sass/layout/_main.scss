@@ -1,20 +1,23 @@
 @charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
 /*
   Main
 -----------------------------------------------------*/
+// .l-main {
+//   clear: both;
+// }
 
-.l-main {
-  clear: both;
-}
+.l-main.-sub {
+  // background-color: rgba($accent-color, 0.25);
 
-@include mq(tab) {
-  .l-main {
-    width: percentage(824px / $content-width);
-    float: left;
-  }
+  // @include mq(md) {
+  //   background-color: $accent-color;
+  // }
 
-  .l-main.-single {
-    width: auto;
-    float: none;
+  @include mq(lg) {
+    padding: pxToRem(120px) 0;
+    // padding: pxToRem(112px) 0;
+    background-color: $accent-color;
   }
 }
