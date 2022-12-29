@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_template_part("header"); ?>
 
 <?php while(have_posts()): the_post(); ?>
 <main class="l-main -single">
@@ -68,4 +68,4 @@
 </main>
 <?php endwhile; ?>
 
-<?php get_footer(); ?>
+<?php get_template_part("footer"); ?>

@@ -1,4 +1,5 @@
-<?php get_header(); ?>
+<?php get_template_part("header"); ?>
+
 <?php while(have_posts()):  the_post(); ?>
 <div class="l-contents">
   <div class="l-container">
@@ -95,4 +96,4 @@
 </div>
 <!-- /.l-contents -->
 <?php endwhile; ?>
-<?php get_footer(); ?>
+<?php get_template_part("footer"); ?>

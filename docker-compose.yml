@@ -59,6 +59,7 @@ services:
     volumes:
       - ./config/php/php.ini:/usr/local/etc/php/php.ini
       - ./public/wp-content:/var/www/html/wp-content
+      - ./wp-install.sh:/tmp/wp-install.sh  # tmpに保管するのか？
 
     restart: always
     environment:

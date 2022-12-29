@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_template_part("header"); ?>
 <main class="l-main -single">
   <header class="p-hero">
     <h1 class="p-hero__title"><?php post_type_archive_title(); ?></h1>
@@ -57,4 +57,4 @@
   <!-- /.l-contents -->
 </main>
 
-<?php get_footer(); ?>
+<?php get_template_part("footer"); ?>
