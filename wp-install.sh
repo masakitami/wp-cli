@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # WordPressセットアップ admin_user,admin_passwordは管理画面のログインID,PW
-# wp core install \
-# --url='http://localhost:7020' \
-# --title='サイトのタイトル' \
-# --admin_user='wordpress' \
-# --admin_password='wordpress' \
-# --admin_email='info@test.com' \
-# --allow-root
+wp core install \
+--url='http://localhost:7020' \
+--title='サイトのタイトル' \
+--admin_user='wordpress' \
+--admin_password='wordpress' \
+--admin_email='info@test.com' \
+--allow-root
 
 # 日本語化
 wp language core install ja --activate --allow-root
@@ -25,10 +25,11 @@ wp plugin delete hello.php --allow-root
 wp plugin delete akismet --allow-root
 
 # プラグインのインストール (必要に応じてコメントアウトを外す)
-wp plugin install wp-multibyte-patch --activate --allow-root
+# wp plugin install wp-multibyte-patch --activate --allow-root
 # wp plugin install backwpup --activate --allow-root
 wp plugin install siteguard --activate --allow-root
-wp plugin install contact-form-7 --activate --allow-root
+wp plugin install  advanced-custom-fields --activate --allow-root
+# wp plugin install contact-form-7 --activate --allow-root
 # wp plugin install wp-mail-smtp --activate --allow-root
 # wp plugin install all-in-one-seo-pack --activate --allow-root
 # wp plugin install broken-link-checker --activate --allow-root
@@ -43,3 +44,6 @@ wp theme delete twentytwentyone --allow-root
 
 # パーマリンク更新
 wp option update permalink_structure /%postname%/ --allow-root
+
+# パスワードを変更(変更したい場合)
+wp user update 1 --user_pass=yakumo  --allow-root

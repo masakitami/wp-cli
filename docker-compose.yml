@@ -66,13 +66,14 @@ services:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_USER: wp_user # MYSQL_USERと同じ
       WORDPRESS_DB_PASSWORD: wp_pass # MYSQL_PASSWORDと同じ
-      WORDPRESS_DB_NAME: wordpress # MYSQL_DATABASEと同じ
+      WORDPRESS_DB_NAME: yakumo # MYSQL_DATABASEと同じ
       WORDPRESS_DEBUG: true
+      WORDPRESS_TABLE_PREFIX: "st_"
 
   mysql:
     build: ./config/mysql
     environment:
-      MYSQL_DATABASE: wordpress
+      MYSQL_DATABASE: yakumo
       MYSQL_USER: wp_user
       MYSQL_PASSWORD: wp_pass
       MYSQL_ROOT_PASSWORD: root_pass
@@ -84,7 +85,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     ports:
-      - 8866:66
+      - 8821:80
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=mysql

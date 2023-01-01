@@ -2,8 +2,4 @@
 /public/wp-content/plugins/**
 /public/wp-content/upgrade/**
 
-/public/wp-content/themes/twentynineteen/**
-/public/wp-content/themes/twentyseventeen/**
-/public/wp-content/themes/twentysixteen/**
-/public/wp-content/themes/twentytwenty/**
-/public/wp-content/themes/twentytwentyone/**
+public/wp-content/themes/wp-cli/**
