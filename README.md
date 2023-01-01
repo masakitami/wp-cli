@@ -22,6 +22,28 @@ nodenvなどでnodeのバージョンを14以上にする。
 ### 手順4
 yarn installでpackage.jsonを読み込む
 
+### 手順5
+
+-　dockerでコンテナを起動
+```
+docker compose up -d
+```
+
+-　dockerでWorPressのコンテナに入る
+```
+docker exec -it [コンテナ名]　/bin/bash
+```
+
+-　コンテナに権限を与える
+```
+chmod +X /tmp/wp-install.sh
+```
+
+-　シェルスクリプトの実行(WordPressのプラグイン等を追加)
+```
+/tmp/wp-install.sh
+```
+
 ## WordPressで使う場合の注意点
 - 404.phpを表示させるためにはパーマリンク設定を適当に選んで切り替える
 
@@ -137,7 +159,7 @@ node -v
 
 こちらも予め、インストールしておいて下さい。
 
-### Docker、Docker Comporse がインストールされているか確認する方法
+### Docker、Docker Composer がインストールされているか確認する方法
 
 ターミナルなどのコマンドラインツールを立ち上げて、以下のコマンドを入力
 
