@@ -9,8 +9,9 @@ function customMenu_setup() {
     カスタムメニュー
   ----------------------------------- */
   $locations = [
-    'global' => 'Global Navigation',
-    'footer-menu' => 'フッターメニュー'
+    'global' => 'pc用グローバルナビ',
+    'global-drawer' => "スマホ用グローバルナビ",
+    'footer-menu' => 'フッターメニュー',
   ];
   register_nav_menus($locations);
 
@@ -22,15 +23,15 @@ function customMenu_setup() {
   }
   add_filter('nav_menu_item_id', 'remove_menu_id', 10);
 
-  /*
-    カスタムメニューの入れ子のsub-menuクラスを変更
-  ----------------------------------- */
-  function new_submenu_class($menu) {    
-    $menu = preg_replace('/ class="sub-menu"/','/ class="p-globalNav -sub" /',$menu);        
-    return $menu;
-  }
+  // /*
+  //   カスタムメニューの入れ子のsub-menuクラスを変更
+  // ----------------------------------- */
+  // function new_submenu_class($menu) {    
+  //   $menu = preg_replace('/ class="sub-menu"/','/ class="p-globalNav" data-nav-type = sub /',$menu);        
+  //   return $menu;
+  // }
   
-  add_filter('wp_nav_menu','new_submenu_class'); 
+  // add_filter('wp_nav_menu','new_submenu_class'); 
 
   /*
     カスタムメニューのliタグにクラスをつける。
@@ -43,6 +44,7 @@ function customMenu_setup() {
     }
     
     $classes = [];
+    
     if (isset($args->add_li_class)) {
     $classes['class']=$args->add_li_class;
     }
@@ -56,6 +58,19 @@ function customMenu_setup() {
   }
   
   add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
+
+  /*
+  カスタムメニューの入れ子のsub-menuクラスを変更と
+  サブメニューの中にdivタグを入れる(cssで調整しやすいように)
+  ----------------------------------- */
+  class custom_walker_nav_menu extends Walker_Nav_Menu {
+    function start_lvl(&$output, $depth = 1, $args = array()) {
+      $output .= '<div class="c-dropDown__elem"><ul class="p-globalNav" data-nav-type="sub">';
+    }
+    function end_lvl(&$output, $depth = 0, $args = array()) {
+      $output .= '</ul></div>';
+    }
+  }
   
   /*
   aタグにクラスをつけられるようにする
@@ -143,4 +158,17 @@ return $script;
 }
 add_filter('script_loader_tag', 'scriptLoader', 10, 5);
 
+/*======================================
+  ログインした時はheaderの高さを32pxとる(黒のメニューバー分の高さ)。
+======================================*/
+
+// javascriptで対応した。
+
+// function setHeaderHeight () {
+//   if ( is_admin_bar_showing() ) {
+//     echo '<style type="text/css">header {margin-top: 32px;}</style>';
+//   }
+// }
+
+// add_action('wp_head', 'setHeaderHeight');
 ?>

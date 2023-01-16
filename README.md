@@ -11,9 +11,12 @@ version1.0 では、webpack は JavaScript のバンドルとトランスパイ�
 
 ### 手順1
 docker-compose.ymlのportsを適当な数字に変える(まだMacで使ってないport番号。:80は変えない)。
-phpmyadminとmysqlのportsも変える(まだMacで使ってないport番号)
+phpmyadminとmysqlのportsも変える(まだMacで使ってないport番号 :80は変えない)
 
 ### 手順2
+docker-compose.ymlのWORDPRESS_TABLE_PREFIX: "wp_"を適当なprefixに変える。DB名も変える。
+→再度変更したい場合は/config/mysql/mysql_data/の中身を消去する。
+
 package.jsonとwebpack.common.jsのpublicフォルダの書き出しの名前を担当する案件の名前に変える。
 
 ### 手順3
@@ -22,7 +25,7 @@ nodenvなどでnodeのバージョンを14以上にする。
 ### 手順4
 yarn installでpackage.jsonを読み込む
 
-### 手順5
+### 手順6
 
 -　dockerでコンテナを起動
 ```

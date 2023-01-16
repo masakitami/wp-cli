@@ -43,7 +43,7 @@
         <?php  
           $args = [
           'theme_location' => 'global',
-          'menu_class'     => 'p-globalNav',
+          'menu_class'     => 'p-globalNav1',
           'menu_id'        => 'globalNav',
           'container'      => false
         ];

@@ -66,14 +66,14 @@ services:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_USER: wp_user # MYSQL_USERと同じ
       WORDPRESS_DB_PASSWORD: wp_pass # MYSQL_PASSWORDと同じ
-      WORDPRESS_DB_NAME: yakumo # MYSQL_DATABASEと同じ
+      WORDPRESS_DB_NAME: wordpress # MYSQL_DATABASEと同じ
       WORDPRESS_DEBUG: true
-      WORDPRESS_TABLE_PREFIX: "st_"
+      WORDPRESS_TABLE_PREFIX: "wp_"
 
   mysql:
     build: ./config/mysql
     environment:
-      MYSQL_DATABASE: yakumo
+      MYSQL_DATABASE: wordpress
       MYSQL_USER: wp_user
       MYSQL_PASSWORD: wp_pass
       MYSQL_ROOT_PASSWORD: root_pass

@@ -5,8 +5,16 @@ import closetPolyfill from "./lib/closet.polyfill";
 objectFitImages();
 closetPolyfill();
 
+// wp用
+import WpSetHeight from "./lib/wp/WpSetHeight";
+new WpSetHeight();
+
+import WpGlobalNav from "./lib/wp/WpGlobalNav";
+new WpGlobalNav();
+
 // Libraly
 import Loading from "./lib/Loading";
+// import DropDown from "./lib/test";
 // import $ from "jquery";
 // import Swiper from 'swiper';
 // import SmoothScroll from "smooth-scroll";
@@ -16,8 +24,13 @@ import Loading from "./lib/Loading";
 // import Slider from "./lib/Slider";
 // import { dropdown } from './lib/dropdown';
 // import { inview } from './lib/inview';
+// import MomentumScroll from "./lib/MomentumScroll";
+// new MomentumScroll();
+// new DropDown();
 
 new Loading();
+
+// import {wpSetHeight} from './lib/wp/wpSetHeight';
 // new SmoothScroll('a[href*="#"]');
 // new Toggle(".js-drawer");
 

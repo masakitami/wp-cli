@@ -6,17 +6,44 @@
   Header
 */
 .p-header {
-  &__inner {
-    display: flex;
+  @include mq(lg) {
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    border-radius: 10px;
+    background-color: pink;
   }
 
-  &__title {
+  &.is-borderBottomInactive {
+    border-bottom-right-radius: unset;
+    border-bottom-left-radius: unset;
+  }
+
+  &__inner {
+    @include mq(lg) {
+      display: flex;
+      position: relative;
+      align-items: flex-start;
+    }
+  }
+
+  &__logo {
     position: fixed;
     z-index: 20;
     width: 75%;
+
     @include mq(lg) {
-      position: relative;
-      width: 90%;
+      position: static;
+      flex: 0 0 pxToRem(180px);
+      max-width: pxToRem(180px);
+    }
+  }
+
+  &__nav {
+    display: none;
+    flex-grow: 1;
+
+    @include mq(lg) {
+      display: block;
     }
   }
 }

@@ -21,37 +21,22 @@
   <link rel="author" href="/humans.txt" />
   <title>【サイト名】 | 〇〇〇〇</title>
   <!-- <script src="/assets/js/main.js" defer></script> -->
-  <link rel="stylesheet" href="ee" />
 </head>
 <body <?php body_class(); ?>>
-  <header class="l-header p-header">
+  <header class="l-header">
     <div class="l-container">
-      <div class="p-header__info">
-        <h1 class="p-header__title"><a href="<?php echo esc_url(home_url()); ?>" class="p-logo"><?php bloginfo(
-  "name"
-); ?></a></h1>
-        <p class="p-header__text"><?php bloginfo("description"); ?></p>
+      <div class="p-header" id="js-header">
+        <div class="p-header__inner">
+          <div class="p-header__logo">
+            <h1><a href="<?php echo esc_url(home_url()); ?>" alt="ロゴ">ロゴ</a></h1>
+          </div>
+          <!-- /.p-header__logo -->
+          <?php get_template_part("template-parts/gnav/gnav-pc"); ?>
+        </div>
+        <!-- p-header -->
       </div>
-      <!-- /.p-header__info -->
-      <nav class="p-header__nav">
-        <h2 class="screen-reader-text">サイト内メニュー</h2>
-        <button class="js-drawer c-button p-hamburger" aria-controls="globalNav" aria-expanded="false">
-          <span class="p-hamburger__line">
-            <span class="screen-reader-text">メニューを開閉</span>
-          </span>
-        </button>
-        <?php  
-          $args = [
-          'theme_location' => 'global',
-          'menu_class'     => 'p-globalNav',
-          'menu_id'        => 'globalNav',
-          'container'      => false,
-          'add_li_class' => 'p-globalNav__list -normal',
-          'add_a_class' => '' ,//
-        ];
-          wp_nav_menu($args);
-        ?>
-      </nav>
-    </div>
-    <!-- /.p-header__inner -->
+      <!-- /.l-container-->
   </header>
+  <div class="p-hamburger"></div>
+  <nav class="p-drawer"><?php get_template_part("template-parts/gnav/gnav-sp"); ?></nav>
+  <!-- /.l-header-->

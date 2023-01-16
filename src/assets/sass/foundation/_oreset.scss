@@ -133,13 +133,13 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
 
-  &.is-useJs {
-    overflow-y: hidden;
-    touch-action: none;
-    @include mq(lg) {
-      overflow-y: visible;
-    }
-  }
+  // &.is-useJs {
+  //   overflow-y: hidden;
+  //   touch-action: none;
+  //   @include mq(lg) {
+  //     overflow-y: visible;
+  //   }
+  // }
 
   &.is-loaded {
     overflow-y: visible;
