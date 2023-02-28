@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 
 /* ======================================
   テーマの設定(セキュリティなど最初に設定する関数)
@@ -24,4 +25,3 @@ require_once(dirname(__FILE__).'/admin/customPost_setup.php');
   便利な関数をまとめる
 ======================================*/
 require_once(dirname(__FILE__).'/admin/toolkit.php');
-

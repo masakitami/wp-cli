@@ -1,0 +1,56 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  drawer
+*/
+
+.p-drawer {
+  display: block;
+
+  @include mq(lg) {
+    display: none;
+  }
+}
+
+.p-toc {
+  @include mq(lg) {
+    display: flex;
+  }
+}
+
+.p-toc-index {
+  @include mq(lg) {
+    display: block;
+    position: sticky;
+    top: 10vw;
+    flex-basis: 50%;
+    height: 100%;
+  }
+
+  &__list {
+    display: block;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__border {
+    transition: stroke-dashoffset 1s 0s cubic-bezier(1, 0.25, 0.1, 1);
+    stroke-width: 1px;
+    stroke-dasharray: var(--stroke-dasharray, 0); //js操作
+    stroke-dashoffset: var(--stroke-dashoffset, 0); //js操作
+    stroke: var(--color, blue);
+    fill: transparent;
+    cx: 20;
+    cy: 20;
+    r: 10;
+  }
+}
+
+.p-toc-contents {
+  flex-basis: 50%;
+}

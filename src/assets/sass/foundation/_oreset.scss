@@ -2,10 +2,47 @@
 @use "sass:math";
 @use "../global" as *;
 
-/*! Oreset.css v1.0.0 | MIT License | https://github.com/hirosiva/Oreset.css */
 /*
   # Global
 ---------------------------------------------- */
+/**
+ * Settings
+ */
+:root {
+  --#{$prefix}-content-width: #{$content-width};
+  @each $size, $val in $spaces {
+    --#{$prefix}-space-#{$size}: #{$val};
+  }
+
+  --#{$prefix}-space: #{$space};
+
+  --#{$prefix}-sm-design-width: #{$sm-comp-width};
+  --#{$prefix}-md-design-width: #{$md-comp-width};
+  --#{$prefix}-lg-design-width: #{$lg-comp-width};
+  --#{$prefix}-scrollbar-width: #{$scroll-bar};
+  --#{$prefix}-base-color: #fff;
+  --#{$prefix}-main-color: #116ec5;
+  --#{$prefix}-accent-color: #e4d558;
+  --#{$prefix}-light-color: #efefef;
+  --#{$prefix}-dark-color: #1c1c1c;
+  --#{$prefix}-primary-text-color: #101010;
+  --#{$prefix}-light-text-color: #fff;
+  --#{$prefix}-primary-font-set: sans-serif;
+  --#{$prefix}-en-font-set: sans-serif;
+  --#{$prefix}-base-line-height: 1.5;
+  --#{$prefix}-scroll-behavior: smooth;
+  --#{$prefix}-ease-out-expo: #{$ease-out-expo};
+  --#{$prefix}-duration: #{$duration};
+
+  --#{$prefix}-view-point: var(--#{$prefix}-sm-design-width);
+  @include mq(md) {
+    --#{$prefix}-view-point: var(--#{$prefix}-md-design-width);
+  }
+  @include mq(lg) {
+    --#{$prefix}-view-point: var(--#{$prefix}-lg-design-width);
+  }
+}
+
 /**
  * Default box-sizing
  */
@@ -129,78 +166,22 @@ section {
 html {
   box-sizing: border-box;
   min-height: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-
-  // &.is-useJs {
-  //   overflow-y: hidden;
-  //   touch-action: none;
-  //   @include mq(lg) {
-  //     overflow-y: visible;
-  //   }
-  // }
-
-  &.is-loaded {
-    overflow-y: visible;
-    touch-action: auto;
-  }
-
-  &.is-drawerActive {
-    overflow-y: hidden;
-    touch-action: none;
-    @include mq(lg) {
-      overflow-y: visible;
-    }
-  }
+  scroll-behavior: var(--#{$prefix}-scroll-behavior, initial);
 }
 
 body {
   min-height: 100%;
-  color: $primary-text-color;
-  font: 1em/1.5 $font-set-primary;
+  background-color: var(--#{$prefix}-base-color);
+  color: var(--#{$prefix}-primary-text-color, #101010);
+  font-family: var(--#{$prefix}-primary-font-set, "sans-serif");
   letter-spacing: 0.05em;
+  line-height: var(--#{$prefix}-base-line-height, 1.5);
   text-rendering: optimizeLegibility;
   -webkit-overflow-scrolling: touch;
-  // font-feature-settings: "palt";
   font-feature-settings: "pkna";
-
-  .is-drawerActive & {
-    overflow-y: hidden;
-    touch-action: none;
-    @include mq(lg) {
-      overflow-y: visible;
-    }
-  }
-
-  &::after {
-    content: "";
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    animation: fadeOut 1s $easing 3s 1 both;
-    background-color: #fff;
-
-    .is-useJs & {
-      animation: none;
-    }
-    .is-loaded & {
-      visibility: hidden;
-      transform: translate3d(-5%, 0, 0) scale3d(0, 1, 1);
-      transform-origin: left center;
-      transition-property: transform, visibility;
-      transition-duration: 0.8s, 0.1s;
-      transition-timing-function: $easing-cut;
-      transition-delay: 0.5s, 1.5s;
-      pointer-events: none;
-      will-change: transform;
-    }
-  }
 }
 
 /*
@@ -309,7 +290,8 @@ audio:not([controls]) {
 }
 
 img,
-video {
+video,
+svg {
   max-width: 100%;
   height: auto;
   vertical-align: bottom;
@@ -403,7 +385,6 @@ textarea {
   font: inherit;
   -webkit-appearance: button;
 }
-
 /*
   # Interactive & Misc
 ---------------------------------------------- */
@@ -468,7 +449,13 @@ template,
  * Checker
  */
 button:not([type]):after {
-  content: "警告： このbuttonにはtype属性がありません";
+  content: "【警告】このbuttonにはtype属性がありません";
   background-color: red;
   color: #fff;
+
+  form & {
+    content: none;
+    background-color: transparent;
+    color: inherit;
+  }
 }

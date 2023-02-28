@@ -4,107 +4,92 @@
 /*
   Spacer
 -----------------------------------------------------*/
-.l-spacer {
-  @each $size, $val in $spaces {
-    &.-#{$size} {
-      padding: pxToRem(calc($val / 2)) 0;
-
-      @include mq(md) {
-        padding: pxToRem(calc($val / 1.5)) 0;
-      }
-
-      @include mq(lg) {
-        padding: pxToRem($val) 0;
-      }
-    }
-    &.-#{$size}Top {
-      padding-top: pxToRem(calc($val / 2));
-
-      @include mq(md) {
-        padding-top: pxToRem(calc($val / 1.5));
-      }
-
-      @include mq(lg) {
-        padding-top: pxToRem($val);
-      }
-    }
-    &.-#{$size}Bottom {
-      padding-bottom: pxToRem(calc($val / 2));
-
-      @include mq(md) {
-        padding-bottom: pxToRem(calc($val / 1.5));
-      }
-
-      @include mq(lg) {
-        padding-bottom: pxToRem($val);
-      }
-    }
-  }
-
+.#{$prefix}-spacer {
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
-      $ratio: 2;
-
-      @if $breakpoint >= 768px {
-        $ratio: 1.5;
-      }
-      @if $breakpoint >= 992px {
-        $ratio: 1;
-      }
-
-      @each $size, $val in $spaces {
-        @if $breakpoint == 0 or $breakpoint == 768px or $breakpoint == 992px {
-          &[data-space~="#{$size}"] {
-            padding: pxToRem(math.div($val, $ratio)) 0;
-          }
-          &[data-space~="#{$size}Top"] {
-            padding-top: pxToRem(math.div($val, $ratio));
-          }
-          &[data-space~="#{$size}Bottom"] {
-            padding-bottom: pxToRem(math.div($val, $ratio));
-          }
+      @for $i from 0 through 30 {
+        &[data-py~="#{$device}:#{$i}"] {
+          padding-top: calc(pxToRem(var(--#{$prefix}-space)) * $i);
+          padding-bottom: calc(pxToRem(var(--#{$prefix}-space)) * $i);
         }
 
-        &[class][data-space~="#{$device}:#{$size}"] {
-          padding: pxToRem($val) 0;
+        &[data-px~="#{$device}:#{$i}"] {
+          padding-right: calc(pxToRem(var(--#{$prefix}-space)) * $i);
+          padding-left: calc(pxToRem(var(--#{$prefix}-space)) * $i);
         }
 
-        &[class][data-space~="#{$device}:#{$size}Top"] {
-          padding-top: pxToRem($val);
+        &[data-pr~="#{$device}:#{$i}"] {
+          padding-right: calc(pxToRem(var(--#{$prefix}-space)) * $i);
+          padding-left: 0;
         }
 
-        &[class][data-space~="#{$device}:#{$size}Bottom"] {
-          padding-bottom: pxToRem($val);
+        &[data-pl~="#{$device}:#{$i}"] {
+          padding-right: 0;
+          padding-left: calc(pxToRem(var(--#{$prefix}-space)) * $i);
         }
-      }
 
-      &[class][data-space~="#{$device}:reset"] {
-        padding: 0;
-      }
+        &[data-my~="#{$device}:#{$i}"] {
+          margin-top: calc(pxToRem(var(--#{$prefix}-space)) * $i);
+          margin-bottom: calc(pxToRem(var(--#{$prefix}-space)) * $i);
+        }
 
-      &[class][data-space~="#{$device}:resetTop"] {
-        padding-top: 0;
-      }
+        &[data-mx~="#{$device}:#{$i}"] {
+          margin-right: calc(pxToRem(var(--#{$prefix}-space)) * $i);
+          margin-left: calc(pxToRem(var(--#{$prefix}-space)) * $i);
+        }
 
-      &[class][data-space~="#{$device}:resetBottom"] {
-        padding-bottom: 0;
+        &[data-mr~="#{$device}:#{$i}"] {
+          margin-right: calc(pxToRem(var(--#{$prefix}-space)) * $i);
+          margin-left: 0;
+        }
+
+        &[data-ml~="#{$device}:#{$i}"] {
+          margin-right: 0;
+          margin-left: calc(pxToRem(var(--#{$prefix}-space)) * $i);
+        }
       }
     }
   }
 
-  &.-line {
-    border-bottom: 1px solid $primary-border-color;
-  }
-
-  &.-bgGrey {
-    background-color: #ddd;
-  }
-
-  &.-bgMain {
-    background-color: $main-color;
-  }
-
-  &.-overflow {
+  // overflow
+  &[data-overflow="hidden"] {
     overflow: hidden;
+  }
+  &[data-overflow="auto"] {
+    overflow: auto;
+  }
+  &[data-overflow="visible"] {
+    overflow: visible;
+  }
+
+  // Background-color
+  &[data-bg="base"] {
+    background-color: var(--#{$prefix}-base-color);
+  }
+  &[data-bg="main"] {
+    background-color: var(--#{$prefix}-main-color);
+  }
+  &[data-bg="accent"] {
+    background-color: var(--#{$prefix}-accent-color);
+  }
+  &[data-bg="light"] {
+    background-color: var(--#{$prefix}-light-color);
+  }
+  &[data-bg="dark"] {
+    background-color: var(--#{$prefix}-dark-color);
+  }
+  &[data-bg="white"] {
+    background-color: #fff;
+  }
+  &[data-bg="block"] {
+    background-color: #000;
+  }
+
+  // border-color
+  &[data-border~="top"] {
+    border-top: 1px solid var(--#{$prefix}-light-color);
+  }
+  &[data-border~="bottom"] {
+    border-bottom: 1px solid var(--#{$prefix}-light-color);
   }
 }

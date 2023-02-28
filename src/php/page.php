@@ -1,13 +1,13 @@
-<?php get_template_part("header"); ?>
+<?php get_template_part("template-parts/header"); ?>
 
 
-<?php while(have_posts()): the_post();?>
+<?php while (have_posts()): the_post();?>
 <main class="l-main -single">
   <header class="p-hero">
     <h1 class="p-hero__title"><?php the_title(); ?></h1>
-    <?php if ( has_post_thumbnail()) : ?>
+    <?php if (has_post_thumbnail()) : ?>
     <figure class="p-hero__eyecatch">
-      <?php the_post_thumbnail( 'dummy-full' ); ?>
+      <?php the_post_thumbnail('dummy-full'); ?>
     </figure>
     <?php endif; ?>
   </header>

@@ -12,8 +12,14 @@ new WpSetHeight();
 import WpGlobalNav from "./lib/wp/WpGlobalNav";
 new WpGlobalNav();
 
+import Toc from "./lib/Toc";
+new Toc();
+
+import Test from "./lib/test";
+new Test();
+
 // Libraly
-import Loading from "./lib/Loading";
+// import Loading from "./lib/Loading";
 // import DropDown from "./lib/test";
 // import $ from "jquery";
 // import Swiper from 'swiper';
@@ -28,7 +34,7 @@ import Loading from "./lib/Loading";
 // new MomentumScroll();
 // new DropDown();
 
-new Loading();
+// new Loading();
 
 // import {wpSetHeight} from './lib/wp/wpSetHeight';
 // new SmoothScroll('a[href*="#"]');

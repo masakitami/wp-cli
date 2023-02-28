@@ -1,0 +1,15 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+// list
+// --------------------------------
+// 意味付け用の「予約語」として使用し、グローバルなスタイルは与えない。
+.list {
+}
+
+.list--item {
+}
+
+.list--item-button {
+}

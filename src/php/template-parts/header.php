@@ -23,7 +23,7 @@
   <!-- <script src="/assets/js/main.js" defer></script> -->
 </head>
 <body <?php body_class(); ?>>
-  <header class="l-header">
+  <header class="l-header header--container">
     <div class="l-container">
       <div class="p-header" id="js-header">
         <div class="p-header__inner">

@@ -18,7 +18,7 @@ export default class Loading {
     if (!this.targetElem) {
       return;
     }
-
+    
     this._init();
   }
 

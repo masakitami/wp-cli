@@ -5,24 +5,41 @@
 /*
   Container
 -----------------------------------------------------*/
-
-.l-container {
+.#{$prefix}-container {
   margin: 0 auto;
 
   &:not([data-enabled]) {
     width: 90%;
-    max-width: 1200px;
+    max-width: calc(var(--#{$prefix}-content-width) * 1px);
+  }
+
+  &:not([data-align]) {
+    margin: 0 auto;
   }
 
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
       &[data-enabled~="#{$device}"] {
         width: 90%;
-        max-width: 1200px;
+        max-width: calc(var(--#{$prefix}-content-width) * 1px);
       }
+
       &[data-disabled~="#{$device}"] {
         width: auto;
         max-width: none;
+      }
+
+      &[data-align~="#{$device}:left"] {
+        margin-right: auto;
+        margin-left: 0;
+      }
+      &[data-align~="#{$device}:right"] {
+        margin-right: 0;
+        margin-left: auto;
+      }
+      &[data-align~="#{$device}:center"] {
+        margin-right: auto;
+        margin-left: auto;
       }
     }
   }

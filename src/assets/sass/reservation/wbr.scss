@@ -1,0 +1,28 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  wbr
+-----------------------------------------------------*/
+.wbr {
+  @each $device, $breakpoint in $breakpoints {
+    @include mq($device) {
+      &-#{$device} {
+        display: inline-block;
+      }
+      &-#{$device}-none {
+        display: none;
+      }
+      &-#{$device}-hard {
+        display: block;
+      }
+      &-#{$device}-reset {
+        display: inline;
+      }
+      &-#{$device}-nowrap {
+        white-space: nowrap;
+      }
+    }
+  }
+}

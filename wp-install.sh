@@ -29,6 +29,9 @@ wp plugin delete akismet --allow-root
 # wp plugin install backwpup --activate --allow-root
 wp plugin install siteguard --activate --allow-root
 wp plugin install  advanced-custom-fields --activate --allow-root
+wp plugin install  mw-wp-form --activate --allow-root
+# yoastSEOというプラグイン
+wp plugin install  wordpress-seo --activate --allow-root
 # wp plugin install contact-form-7 --activate --allow-root
 # wp plugin install wp-mail-smtp --activate --allow-root
 # wp plugin install all-in-one-seo-pack --activate --allow-root
@@ -46,4 +49,4 @@ wp theme delete twentytwentyone --allow-root
 wp option update permalink_structure /%postname%/ --allow-root
 
 # パスワードを変更(変更したい場合)
-wp user update 1 --user_pass=yakumo  --allow-root
+# wp user update 1 --user_pass=yakumo  --allow-root

@@ -7,15 +7,15 @@
     position: relative;
 
     .c-dropDown__elem {
-      display: none;
       position: absolute;
-      z-index: -1;
+      z-index: -2;
       width: 100%;
+      transform: translateY(-100%);
+      transition: all 0.3s 0s cubic-bezier(0.51, 0.11, 0, 0.99);
 
       &.is-drawerActive {
-        display: block;
-        z-index: 1;
-        // width: 100%;
+        z-index: -1;
+        transform: translateY(0); // width: 100%;
       }
 
       .is-drawerActive &__inner {

@@ -1,6 +1,6 @@
 <?php get_template_part("header"); ?>
 
-<?php while(have_posts()): the_post(); ?>
+<?php while (have_posts()): the_post(); ?>
 <main class="l-main -single">
   <div class="l-contents -themeWhite">
     <div class="p-article">
@@ -8,7 +8,7 @@
         <header class="p-article__header">
           <h1 class="p-article__title -detail -center"><?php the_title(); ?>(single-works.phpです)</h1>
 
-          <?php if(has_post_thumbnail()): ?>
+          <?php if (has_post_thumbnail()): ?>
           <figure class="p-article__eyecatch">
             <!-- <img src="assets/images/no-picture_single.png"
               srcset="assets/images/no-picture_single.png, assets/images/no-picture_single@2x.png 2x" alt=""> -->
@@ -17,7 +17,7 @@
           <?php endif; ?>
 
           <dl class="p-article__metaList">
-            <?php if(get_field('client')): ?>
+            <?php if (get_field('client')): ?>
             <dt>クライアント</dt>
             <dd><?php the_field('client'); ?></dd>
             <?php endif;  ?>
@@ -28,12 +28,12 @@
             </dd>
             <dt>作品のタイプ</dt>
             <dd>
-              <?php  
+              <?php
                 $terms = get_the_terms($post->ID, 'work_type');
-              ?>
-              <?php if($terms && !is_wp_error($terms)): ?>
+    ?>
+              <?php if ($terms && !is_wp_error($terms)): ?>
               <ul class="post-categories -inList">
-                <?php foreach($terms as $term ): ?>
+                <?php foreach ($terms as $term): ?>
                 <li><a
                     href="<?php echo esc_url(get_term_link($term, $term->taxonomy));?>"><?php echo esc_html($term->name); ?></a>
                 </li>
@@ -44,11 +44,11 @@
             <dt>作業内容</dt>
             <dd>
               <?php $terms = get_the_terms($post->ID, 'work_contents'); ?>
-              <?php if( $terms && !is_wp_error($terms)) :  ?>
+              <?php if ($terms && !is_wp_error($terms)) :  ?>
               <ul class="post-categories -inList">
-                <?php foreach($terms as $term) :  ?>
+                <?php foreach ($terms as $term) :  ?>
                 <li><a
-                    href="<?php echo esc_url( get_term_link($term, $term->taxonomy) ); ?>"><?php echo esc_html($term->name); ?></a>
+                    href="<?php echo esc_url(get_term_link($term, $term->taxonomy)); ?>"><?php echo esc_html($term->name); ?></a>
                 </li>
                 <?php endforeach; ?>
               </ul>

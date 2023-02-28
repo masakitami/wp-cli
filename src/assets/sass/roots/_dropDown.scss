@@ -1,0 +1,26 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+.c-dropDown[data-type="subMenu"] {
+  @include mq(lg) {
+    position: relative;
+
+    .c-dropDown__elem {
+      position: absolute;
+      z-index: -2;
+      width: 100%;
+      transform: translateY(-100%);
+      transition: all 0.3s 0s cubic-bezier(0.51, 0.11, 0, 0.99);
+
+      &.is-drawerActive {
+        z-index: -1;
+        transform: translateY(0); // width: 100%;
+      }
+
+      .is-drawerActive &__inner {
+        visibility: visible;
+      }
+    }
+  }
+}

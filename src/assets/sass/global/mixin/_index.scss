@@ -3,7 +3,6 @@
 //  MIXIN
 //============================================
 @forward "media-query";
-@forward "browsers-hack";
+@forward "ie11";
 @forward "aspect-ratio";
-@forward "lh-crop";
-@forward "hover";
+@forward "fs";

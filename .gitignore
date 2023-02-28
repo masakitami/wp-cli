@@ -72,3 +72,5 @@ typings/
 
 config/mysql/mysql_data/
 public/
+
+.php-cs-fixer.cache

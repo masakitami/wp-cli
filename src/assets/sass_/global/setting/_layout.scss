@@ -1,0 +1,55 @@
+@charset 'UTF-8';
+//============================================
+//  Layout Settings
+//============================================
+
+// Contentの幅
+$content-width: 1200px !default;
+
+// ファーストビューの高さ
+$first-view: 768px;
+
+// デザインカンプのアートボードサイズ
+$sp-comp-width: 375px;
+$tab-comp-width: 768px;
+$pc-comp-width: 1366px;
+
+// ブレークポイント
+$breakpoints: (
+  xxs: 0,
+  xs: 360px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
+  xxxl: 1920px,
+) !default;
+
+// 余白
+$spaces: (
+  xxxxsmall: 4px,
+  xxxsmall: 8px,
+  xxsmall: 16px,
+  xsmall: 24px,
+  small: 32px,
+  xxxxmedium: 40px,
+  xxxmedium: 48px,
+  xxmedium: 56px,
+  xmedium: 64px,
+  medium: 72px,
+  large: 80px,
+  xlarge: 104px,
+  xxlarge: 128px,
+  xxxlarge: 232px,
+) !default;
+
+// Grid Column
+$column: 12;
+
+// Gutter Size
+$gutters: (
+  small: 1vw,
+  normal: 2vw,
+  large: 5vw,
+) !default;

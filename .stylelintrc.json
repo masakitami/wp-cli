@@ -21,6 +21,8 @@
     "string-quotes": "double",
     "shorthand-property-no-redundant-values": true,
     "value-keyword-case": "lower",
-    "property-case": "lower"
+    "property-case": "lower",
+    "block-no-empty":null,
+    "no-descending-specificity":null
   }
 }

@@ -2,20 +2,19 @@
 @use "../setting" as *;
 @use "../function" as *;
 
-@use "sass:map";
-
 //  aspect ratio
 //--------------------------------------------
 @mixin ar($width, $height) {
   aspect-ratio: aspect($width, $height);
+
   width: 100%;
   @supports not (aspect-ratio: 1 / 1) {
     position: relative;
-    padding-top: calc($height / $width) * 100%;
+    padding-top: percentage(calc($height / $width));
   }
   @media all and (-ms-high-contrast: none) {
     position: relative;
-    padding-top: calc($height / $width) * 100%;
+    padding-top: percentage(calc($height / $width));
   }
 
   > img,

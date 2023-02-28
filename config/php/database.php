@@ -1,4 +1,5 @@
 <?php
+
   define('DB_NAME', 'docker_db');
   define('DB_USER', 'docker_user');
   define('DB_PASSWORD', 'docker_pass');

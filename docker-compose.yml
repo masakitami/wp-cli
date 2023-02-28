@@ -93,5 +93,10 @@ services:
       - PMA_PASSWORD=wp_pass
     depends_on:
       - mysql
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1070:1070"
+      - "1020:1020"
 volumes:
   mysql_data:
