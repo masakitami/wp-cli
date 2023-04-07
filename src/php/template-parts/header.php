@@ -22,7 +22,7 @@
   <title>【サイト名】 | 〇〇〇〇</title>
   <!-- <script src="/assets/js/main.js" defer></script> -->
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> data-barba="wrapper">
   <header class="l-header header--container">
     <div class="l-container">
       <div class="p-header" id="js-header">
@@ -39,4 +39,6 @@
   </header>
   <div class="p-hamburger"></div>
   <nav class="p-drawer"><?php get_template_part("template-parts/gnav/gnav-sp"); ?></nav>
-  <!-- /.l-header-->
+  <div data-barba="container" data-barba-namespace="home">
+    <?php get_template_part("template-parts/loading2"); ?>
+    <!-- /.l-header-->

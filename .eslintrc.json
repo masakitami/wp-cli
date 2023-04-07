@@ -12,9 +12,12 @@
   "globals": {
     "jQuery": "readonly",
     "$": "readonly",
-    "dataLayer": false
+    "dataLayer": false,
+    "gtag":"writeable",
+    "ga":"writeable"
   },
   "rules": {
+    "no-unused-vars": "off",
     "prettier/prettier": "error",
     "semi": [
       "error",

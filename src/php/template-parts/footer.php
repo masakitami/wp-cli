@@ -11,5 +11,6 @@
   <!-- /.l-container -->
 </footer>
 <?php wp_footer(); ?>
+</div>
 </body>
 </html>

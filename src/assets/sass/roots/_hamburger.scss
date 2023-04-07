@@ -1,0 +1,12 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+/*
+  hamburger
+*/
+
+.hamburger {
+  @include mq(lg) {
+    display: none;
+  }
+}

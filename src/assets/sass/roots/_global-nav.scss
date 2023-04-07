@@ -143,6 +143,7 @@
   display: block;
   position: relative;
   padding: 1em 2em;
+  color: black;
 
   @include mq(lg) {
     text-align: center;

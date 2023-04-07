@@ -1,0 +1,11 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Acordion(WordPressのyoast seo)
+*/
+
+.breadcrumb span:not(.breadcrumb_last) a {
+  color: black;
+}
